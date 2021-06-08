@@ -16,7 +16,7 @@ class Dashboard(View):
         context={
 
         }
-        return render(request,'account/dasboard/dashboard.html', context)
+        return render(request,'account/dashboard/dashboard.html', context)
 
 # Register View
 class Register(View):
@@ -52,6 +52,18 @@ class Register(View):
             messages.warning(request,'Email already Exits !!')
             # redirect to same page
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        else:
+            user_obj = Quser(user=user,email=email, first_name =f_name, last_name =l_name)
+            user_obj.save(user_obj)
+            messages.success(request,'Please Login to Continue')
+            return redirect('login')
+
+# Login View 
+class LoginView(View):
+    def get(self,request,*args,**kwargs):
+        if request.user.is_authenticated:
+            return redirect('dashboard')
+        return redirect(request,'account/user_info/login.html')
 
 
 
