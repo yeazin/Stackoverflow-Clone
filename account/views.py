@@ -12,7 +12,10 @@ from .models import Quser
 
 # Dashboard View
 class Dashboard(View):
-    def get(self, request,*args,**kwargs):    
+    @method_decorator(login_required(login_url='login'))
+    def dispatch(self, request,*args,**kwargs):
+        return super().dispatch(request,*args,**kwargs)
+    def get(self, request,*args,**kwargs): 
         context={
 
         }
@@ -63,7 +66,17 @@ class LoginView(View):
     def get(self,request,*args,**kwargs):
         if request.user.is_authenticated:
             return redirect('dashboard')
-        return redirect(request,'account/user_info/login.html')
+        return render(request,'account/user_info/login.html')
+
+# Logout View
+class LogoutView(View):
+    @method_decorator(login_required(login_url='login'))
+    def dispatch(self, request,*args,**kwargs):
+        return super().dispatch(request,*args,**kwargs)
+
+    def get(self,request):
+        logout(request)
+        return redirect('home')
 
 
 
