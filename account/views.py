@@ -8,7 +8,8 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import make_password
 # model import
-from .models import Quser
+from .models import Quser 
+from question.forms import QuestionForms
 
 # Dashboard View
 class Dashboard(View):
@@ -79,5 +80,28 @@ class LogoutView(View):
         return redirect('home')
 
 
+# Create Questions
+class CreateQuestion(View):
+    def get(self,request,*args,**kwrargs):
+        q_forms = QuestionForms
+        context={
+            'forms':q_forms
+        }
+        return render(request,'question/question_user/create_q.html',context)
+    def post(self,request):
+        forms = QuestionForms(request.POST)
+        if forms.is_valid:
+            obj = forms.save(commit=False)
+            # current user require
+            obj.user = request.user.quser
+            obj.save()
+            messages.success(request,'Your Question has been Added')
+            return redirect('questions')
+
+# Edit Question 
+class EditQuestion(View):
+    @method_decorator(login_required(login_url='login'))
+    def dispatch(self,reqeust,*args,**kwargs):
+        return super().dispatch(reqeust,*args,**kwargs)
 
 
