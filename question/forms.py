@@ -12,4 +12,5 @@ class QuestionForms(ModelForm):
     widgets ={
         'title':forms.TextInput(attrs={'class':'form-control','id':'title','placeholder':'Question Title here'}),
         'tags':forms.MultipleChoiceField(choices=Tags)
+        
     }
