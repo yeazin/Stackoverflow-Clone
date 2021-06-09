@@ -1,5 +1,6 @@
 from django.db import models
 import uuid
+from ckeditor.fields import RichTextField
 from account.models import Quser
 
 class Tags(models.Model):
@@ -29,6 +30,8 @@ class Answer(models.Model):
     question = models.ForeignKey(Question, null=True, on_delete=models.DO_NOTHING)
     answer = models.TextField()
     is_best = models.BooleanField(default=False)
+    upvote = models.IntegerField(default=0)
+    downvote = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True , null=True)
     updated_at = models.DateTimeField(auto_now=True, null=True)
 
