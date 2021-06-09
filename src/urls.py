@@ -7,7 +7,7 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('user/', include('account.urls')),
-    path('question/',include('question.urls')),
+    path('',include('question.urls')),
 
-    path('', views.HomeView.as_view(),name ='home')
+    path('home', views.HomeView.as_view(),name ='home')
 ]
