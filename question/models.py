@@ -17,7 +17,7 @@ class Question(models.Model):
     user = models.ForeignKey(Quser, on_delete=models.SET_NULL, null=True)
     title = models.CharField(max_length=500, null=True)
     tags = models.ManyToManyField(Tags, blank=True)
-    detail = models.TextField()
+    detail = RichTextField(blank=True,null=True)
     views_count = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
     updated_at = models.DateTimeField(auto_now=True, null=True)
