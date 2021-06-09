@@ -10,6 +10,7 @@ class Quser(models.Model):
     profile_image = models.ImageField(upload_to='profile/', null=True)
     first_name = models.CharField(max_length=200, null=True)
     last_naem = models.CharField(max_length=200, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.email

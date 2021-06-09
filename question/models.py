@@ -15,7 +15,8 @@ class Question (models.Model):
     title = models.CharField(max_length=500, null=True)
     tags = models.ManyToManyField(Tags, blank=True)
     detail = models.TextField()
-    created_at = models.DateField(auto_created=True)
+    created_at = models.DateTimeField(auto_now_add=True , null=True)
+    updated_at = models.DateTimeField(auto_now=True, null=True)
 
     def __str__(self):
         return self.title
@@ -27,7 +28,8 @@ class Answer(models.Model):
     question = models.ForeignKey(Question, null=True, on_delete=models.DO_NOTHING)
     answer = models.TextField()
     is_best = models.BooleanField(default=False)
-    created_at = models.DateField(auto_created=True)
+    created_at = models.DateTimeField(auto_now_add=True , null=True)
+    updated_at = models.DateTimeField(auto_now=True, null=True)
 
     def __str__(self):
         return self.answer
@@ -38,7 +40,8 @@ class Comment(models.Model):
     user = models.ForeignKey(Quser, on_delete=models.SET_NULL, null=True)
     answer = models.ForeignKey(Answer, null=True, on_delete=models.DO_NOTHING)
     comment = models.TextField()
-    created_at = models.DateField(auto_created=True)
+    created_at = models.DateTimeField(auto_now_add=True , null=True)
+    updated_at = models.DateTimeField(auto_now=True, null=True)
 
     def __str__(self):
         return self.comment
