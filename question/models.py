@@ -3,6 +3,7 @@ import uuid
 from ckeditor.fields import RichTextField
 from account.models import Quser
 
+
 class Tags(models.Model):
     id = models.UUIDField(primary_key=True, editable=False, default=uuid.uuid4)
     tag = models.CharField(max_length=200, null=True)
@@ -10,14 +11,15 @@ class Tags(models.Model):
     def __str__(self):
         return self.tag
 
-class Question (models.Model):
+
+class Question(models.Model):
     id = models.UUIDField(primary_key=True, editable=False, default=uuid.uuid4)
     user = models.ForeignKey(Quser, on_delete=models.SET_NULL, null=True)
     title = models.CharField(max_length=500, null=True)
     tags = models.ManyToManyField(Tags, blank=True)
     detail = models.TextField()
     views_count = models.IntegerField(default=0)
-    created_at = models.DateTimeField(auto_now_add=True , null=True)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
     updated_at = models.DateTimeField(auto_now=True, null=True)
 
     def __str__(self):
@@ -30,9 +32,8 @@ class Answer(models.Model):
     question = models.ForeignKey(Question, null=True, on_delete=models.DO_NOTHING)
     answer = models.TextField()
     is_best = models.BooleanField(default=False)
-    upvote = models.IntegerField(default=0)
-    downvote = models.IntegerField(default=0)
-    created_at = models.DateTimeField(auto_now_add=True , null=True)
+    vote = models.IntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
     updated_at = models.DateTimeField(auto_now=True, null=True)
 
     def __str__(self):
@@ -44,9 +45,8 @@ class Comment(models.Model):
     user = models.ForeignKey(Quser, on_delete=models.SET_NULL, null=True)
     answer = models.ForeignKey(Answer, null=True, on_delete=models.DO_NOTHING)
     comment = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True , null=True)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
     updated_at = models.DateTimeField(auto_now=True, null=True)
 
     def __str__(self):
         return self.comment
-
