@@ -1,4 +1,10 @@
 from django.contrib import admin
 from .models import Quser
 
-admin.site.register(Quser)
+
+class QuserAdmin(admin.ModelAdmin):
+    
+    list_display = ['email']
+    ordering = ['-created_at']
+    #search_fields = ('email')
+admin.site.register(Quser,QuserAdmin)
