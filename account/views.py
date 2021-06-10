@@ -27,7 +27,7 @@ class Register(View):
     def get(self,request,*args,**kwargs):
         if request.user.is_authenticated:
             return redirect('dashboard')
-        return render (request,'account/user_info/register.html')
+        return render (request,'user_info/register.html')
     
     def post(self,request,*args,**kwargs):
         username = request.POST.get('username')
