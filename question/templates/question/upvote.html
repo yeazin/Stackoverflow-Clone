@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+            integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+<style>
+    div {
+        display: flex;
+        justify-content: center;
+    }
+</style>
+<h1>This is up vote</h1>
+
+{% for ans in answers %}
+    <div>
+        <input class="vote" data-answerid="{{ ans.id }}" data-type="up" type="button" value="Upvote">
+        <p id="vote{{ ans.id }}">{{ ans.vote }}</p>
+        <input class="vote" data-answerid="{{ ans.id }}" data-type="down" type="button" value="DownVote">
+    </div>
+{% endfor %}
+</body>
+<script>
+    $(".vote").click(function () {
+        let v = $(this);
+        let answerId = v.data('answerid')
+        let actionType = v.data('type')
+        console.log(v, answerId, actionType)
+        let data = {
+            'csrfmiddlewaretoken': '{{ csrf_token }}', answerId: answerId,
+            action: actionType,
+        }
+        $.ajax({
+            url: '{% url 'upvote' %}',
+            method: "POST",
+            data: data,
+            dataType: 'json',
+            success: function (data) {
+                {#console.log(data)#}
+                $(`#vote${data['id']}`).text(data['vote'])
+            }
+        })
+    })
+
+</script>
+
+</html>
