@@ -39,4 +39,23 @@ class AllTags(View):
         }
         return render (request,'question/tags/tags.html',context)
 
+# for testing purpose
+def upvote_template(request):
+    answers = Answer.objects.all()
+    return render(request, 'upvote.html', {'answers':answers})
 
+
+def upvote(request):
+    if request.method == "POST":
+        answer_id = request.POST.get('answerId')
+        action_type = str(request.POST.get('action'))
+        print(answer_id, action_type)
+        if action_type.lower() == 'up':
+            answer = Answer.objects.get(id=answer_id)
+            answer.vote+=1
+            answer.save()
+        elif action_type.lower() == 'down':
+            answer = Answer.objects.get(id=answer_id)
+            answer.vote -= 1
+            answer.save()
+        return JsonResponse({'status': "ok","vote":answer.vote,'id':answer.id})
