@@ -10,6 +10,7 @@ from django.contrib import messages
 from question.models import Question
 # import from basis
 from .forms import QuestionForms
+from .models import Answer
 
 
 # Questions view 
@@ -18,7 +19,7 @@ class AllQuestions(View):
         context={
 
         }
-        return render (request,'question/q/questions.html', context)
+        return render (request,'question/questions.html', context)
 
 # View single Question 
 class SingleQuestion(View):
@@ -29,7 +30,7 @@ class SingleQuestion(View):
         context={
             'question':question_obj
         }
-        return render(request,'question/q/single_question.html', context)
+        return render(request,'question/single_question.html', context)
 
 # Tags View 
 class AllTags(View):
@@ -37,7 +38,7 @@ class AllTags(View):
         context ={
 
         }
-        return render (request,'question/tags/tags.html',context)
+        return render (request,'tags/tags.html',context)
 
 # for testing purpose
 def upvote_template(request):

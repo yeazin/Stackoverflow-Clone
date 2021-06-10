@@ -6,7 +6,7 @@
 
     <head>
 
-        <title>Sign Up - Stack Overflow</title>
+        <title>{% block title %} {% endblock %}</title>
         <link rel="shortcut icon" href="https://cdn.sstatic.net/Sites/stackoverflow/Img/favicon.ico?v=ec617d715196">
         <link rel="apple-touch-icon" href="https://cdn.sstatic.net/Sites/stackoverflow/Img/apple-touch-icon.png?v=c78bd457575a">
         <link rel="image_src" href="https://cdn.sstatic.net/Sites/stackoverflow/Img/apple-touch-icon.png?v=c78bd457575a"> 
@@ -29,7 +29,7 @@
         <link rel="stylesheet" type="text/css" href="{% static 'css/web/css03.css' %}">
 
     
-    <script src="{% static 'js/web/webjq.js'%}"></script>
+        <script src="{% static 'js/web/webjq.js'%}"></script>
 
         
         
@@ -47,6 +47,7 @@
              StackExchange.gps.init(true);
         });
     </script>
+    <style>{% block custom_css %} {% endblock %}</style>
     <noscript id="noscript-css"><style>body,.top-bar{margin-top:1.9em}</style></noscript>
     </head>
     <body class="universal-auth-page unified-theme floating-content">
@@ -59,6 +60,7 @@
 
 {% endblock %}
 
+{% block custom_js %} {% endblock %}
         
 <div id="onetrust-consent-sdk" class="d-none"></div>
 <div id="onetrust-banner-sdk" data-controller="s-modal"></div>

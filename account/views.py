@@ -20,7 +20,7 @@ class Dashboard(View):
         context={
 
         }
-        return render(request,'account/dashboard/dashboard.html', context)
+        return render(request,'dashboard/dashboard.html', context)
 
 # Register View
 class Register(View):
@@ -67,7 +67,7 @@ class LoginView(View):
     def get(self,request,*args,**kwargs):
         if request.user.is_authenticated:
             return redirect('dashboard')
-        return render(request,'account/user_info/login.html')
+        return render(request,'user_info/login.html')
 
 # Logout View
 class LogoutView(View):
@@ -87,7 +87,7 @@ class CreateQuestion(View):
         context={
             'forms':q_forms
         }
-        return render(request,'question/question_user/create_q.html',context)
+        return render(request,'question_user/create_q.html',context)
     def post(self,request):
         forms = QuestionForms(request.POST)
         if forms.is_valid:
