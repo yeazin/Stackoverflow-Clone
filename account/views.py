@@ -32,8 +32,8 @@ class Register(View):
     def post(self,request,*args,**kwargs):
         username = request.POST.get('username')
         email = request.POST.get('email')
-        f_name = request.POST.get('fname')
-        l_name = request.POST.get('lname')
+        #f_name = request.POST.get('fname')
+        #l_name = request.POST.get('lname')
         password1 = request.POST.get('password1')
         password2 = request.POST.get('password2')
         username_check = User.objects.filter(username=username)
@@ -57,7 +57,7 @@ class Register(View):
             # redirect to same page
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
         else:
-            user_obj = Quser(user=user,email=email, first_name =f_name, last_name =l_name)
+            user_obj = Quser(user=user,email=email)
             user_obj.save(user_obj)
             messages.success(request,'Please Login to Continue')
             return redirect('login')
