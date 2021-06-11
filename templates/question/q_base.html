@@ -1,27 +1,26 @@
 {% load static %}
-<!DOCTYPE html>
-
-    <html class="html__responsive html__unpinned-leftnav html__fixed-top-bar">
+<html class="html__responsive  html__fixed-top-bar">
 
     <head>
 
-        <title>{% block title %} {% endblock %}</title>
+        <title>Newest Questions - Stack Overflow</title>
         <link rel="shortcut icon" href="https://cdn.sstatic.net/Sites/stackoverflow/Img/favicon.ico?v=ec617d715196">
         <link rel="apple-touch-icon" href="https://cdn.sstatic.net/Sites/stackoverflow/Img/apple-touch-icon.png?v=c78bd457575a">
         <link rel="image_src" href="https://cdn.sstatic.net/Sites/stackoverflow/Img/apple-touch-icon.png?v=c78bd457575a"> 
         <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="/opensearch.xml">
         <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0">
         <meta property="og:type" content= "website" />
-        <meta property="og:url" content="https://stackoverflow.com/users/signup?ssrc=head&amp;returnurl=%2fusers%2fstory%2fcurrent"/>
+        <meta property="og:url" content="https://stackoverflow.com/questions"/>
         <meta property="og:site_name" content="Stack Overflow" />
         <meta property="og:image" itemprop="image primaryImageOfPage" content="https://cdn.sstatic.net/Sites/stackoverflow/Img/apple-touch-icon@2.png?v=73d79a89bded" />
         <meta name="twitter:card" content="summary"/>
         <meta name="twitter:domain" content="stackoverflow.com"/>
-        <meta name="twitter:title" property="og:title" itemprop="name" content="Sign Up" />
+        <meta name="twitter:title" property="og:title" itemprop="name" content="Newest Questions" />
         <meta name="twitter:description" property="og:description" itemprop="description" content="Stack Overflow | The World&#x2019;s Largest Online Community for Developers" />
 
-        <script src="{% static 'js/web/js01.js'%}"></script>
-        <script src="{% static 'js/web/js02.js'%}"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://cdn.sstatic.net/Js/stub.en.js?v=b6b81fff6fef"></script>
+    
     
         <link rel="stylesheet" type="text/css" href="{% static 'css/web/css01.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/web/css02.css' %}">
@@ -39,25 +38,22 @@
         
 
 
-
-    <style>{% block custom_css %} {% endblock %}</style>
+    <script>
+        StackExchange.init({"locale":"en","serverTime":1623226390,"routeName":"Questions/List","stackAuthUrl":"https://stackauth.com","networkMetaHostname":"meta.stackexchange.com","site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"id":1,"cookieDomain":".stackoverflow.com","childUrl":"https://meta.stackoverflow.com","styleCodeWithHighlightjs":true,"negativeVoteScoreFloor":null,"enableSocialMediaInSharePopup":true,"protocol":"https"},"user":{"fkey":"4ec2375abe6ec482a3e4ade22223eee0b2dda527781789fcfaddb0f6ae5399da","tid":"d53e8e44-9273-02b6-228e-058625df7dba","rep":0,"isAnonymous":true,"isAnonymousNetworkWide":true},"events":{"postType":{"question":1},"postEditionSection":{"title":1,"body":2,"tags":3}},"story":{"minCompleteBodyLength":75,"likedTagsMaxLength":300,"dislikedTagsMaxLength":300},"jobPreferences":{"maxNumDeveloperRoles":2,"maxNumIndustries":4},"svgIconPath":"https://cdn.sstatic.net/Img/stacks-icons","svgIconHash":"3366547373af"}, {"userProfile":{"openGraphAPIKey":"4a307e43-b625-49bb-af15-ffadf2bda017"},"userMessaging":{"showNewFeatureNotice":true},"tags":{},"subscriptions":{"defaultBasicMaxTrueUpSeats":250,"defaultFreemiumMaxTrueUpSeats":50,"defaultMaxTrueUpSeats":1000},"snippets":{"renderDomain":"stacksnippets.net","snippetsEnabled":true},"site":{"allowImageUploads":true,"enableImgurHttps":true,"enableUserHovercards":true,"forceHttpsImages":true,"styleCode":true},"questions":{"enableQuestionTitleLengthLiveWarning":true,"maxTitleSize":150,"questionTitleLengthStartLiveWarningChars":50},"intercom":{"appId":"inf0secd","hostBaseUrl":"https://stacksnippets.net"},"paths":{},"monitoring":{"clientTimingsAbsoluteTimeout":30000,"clientTimingsDebounceTimeout":1000},"mentions":{"maxNumUsersInDropdown":50},"markdown":{"enableTables":true},"legal":{"oneTrustConfigId":"c3d9f1e3-55f3-4eba-b268-46cee4c6789c"},"flags":{"allowRetractingCommentFlags":true,"allowRetractingFlags":true},"elections":{"opaVoteResultsBaseUrl":"https://www.opavote.com/results/"},"comments":{},"accounts":{"currentPasswordRequiredForChangingStackIdPassword":true}});
+        StackExchange.using.setCacheBreakers({"js/adops.en.js":"22a9bd59b1e9","js/ask.en.js":"469e6156d3bf","js/begin-edit-event.en.js":"b6f47dd7a88c","js/copy-transpiled.en.js":"53672acce46d","js/cm.en.js":"490f304371e5","js/events.en.js":"911c3f5e9f4d","js/explore-qlist.en.js":"a6f836ff8aa6","js/full-anon.en.js":"def82872b4a7","js/full.en.js":"3d9e6a3e275b","js/help.en.js":"2c6f9524a8ea","js/highlightjs-loader.en.js":"620aed314835","js/inline-tag-editing.en.js":"e5a2bcfcd89d","js/keyboard-shortcuts.en.js":"065d00c0709b","js/markdown-it-loader.en.js":"2e311abea8d2","js/modElections.en.js":"7b9cd81fffcf","js/mobile.en.js":"ed3df618ee8f","js/moderator.en.js":"b4d8fa162399","js/postCollections-transpiled.en.js":"844f16f7e0e9","js/post-validation.en.js":"261eaf2537b3","js/prettify-full.en.js":"6f5a86d2d8da","js/question-editor.en.js":"","js/review.en.js":"2aa278d53a5c","js/review-v2-transpiled.en.js":"5a82478368a8","js/revisions.en.js":"d1bd84a6d22d","js/stacks-editor.en.js":"3d8c09d66412","js/tageditor.en.js":"f9c50de68213","js/tageditornew.en.js":"8f067b22d8ab","js/tagsuggestions.en.js":"a9ff449efcdc","js/unlimited-transpiled.en.js":"00fd937afdbd","js/wmd.en.js":"5134c267a712","js/snippet-javascript-codemirror.en.js":"e640df7f27cf"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
     <noscript id="noscript-css"><style>body,.top-bar{margin-top:1.9em}</style></noscript>
     </head>
-    <body class="universal-auth-page unified-theme floating-content">
+    <body class="questions-page unified-theme">
     <div id="notify-container"></div>
     <div id="custom-header"></div>
 
 {% include 'main_base/header.html' %}
-<div class="container" style="background-color: white;" >
+
   
-
-
-{% block body %}
-
-{% endblock %}
-
-
-</div>
 {% block custom_js %} {% endblock %}
         
 <div id="onetrust-consent-sdk" class="d-none"></div>
