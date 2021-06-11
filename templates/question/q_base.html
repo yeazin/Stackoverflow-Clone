@@ -54,12 +54,15 @@
     <div id="custom-header"></div>
 
 {% include 'main_base/header.html' %}
-<div >
-{% include 'question/left_sidebar.html' %}
+<div class="container" style="background-color: white;" >
+    {% include 'question/left_sidebar.html' %}
+
+
 {% block body %}
 
 {% endblock %}
-{% include 'question/right_sidebar.html' %}
+
+
 </div>
 {% block custom_js %} {% endblock %}
         
