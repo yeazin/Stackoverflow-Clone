@@ -19,7 +19,7 @@ class AllQuestions(View):
         context={
 
         }
-        return render (request,'question/questions.html', context)
+        return render (request,'question/questions2.html', context)
 
 # View single Question 
 class SingleQuestion(View):
