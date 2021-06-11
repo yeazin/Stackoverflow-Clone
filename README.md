@@ -17,7 +17,7 @@
   <img align="left" alt="Abhishek's LinkedIN" width="22px" src="https://raw.githubusercontent.com/peterthehan/peterthehan/master/assets/facebook.svg" />
 </a>
 </td>
-    <td align="center"><a href="https://github.com/yeazin"><img src="https://avatars.githubusercontent.com/u/41265694?v=4" width="100px;" style="border-radius:8px;" alt=""/><br /><sub><b>Nur Amin Sifat</b></sub></a><br />
+    <td align="center"><a href="https://github.com/NurAminSifatTanha"><img src="https://avatars.githubusercontent.com/u/41265694?v=4" width="100px;" style="border-radius:8px;" alt=""/><br /><sub><b>Nur Amin Sifat</b></sub></a><br />
     <a href="https://github.com/NurAminSifatTanha">
   <img align="left" alt="Abhishek's LinkedIN" width="22px" src="https://raw.githubusercontent.com/peterthehan/peterthehan/master/assets/github.svg" />
     </a><a href="https://www.linkedin.com/in/nur-amin-sifat/">
