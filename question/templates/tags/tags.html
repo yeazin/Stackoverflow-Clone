@@ -25,7 +25,7 @@
                                 href="/questions/tagged/java?sort=newest&amp;days=1"
                                 title="495 questions tagged java in the last 24 hours">{{ tag.tag|count_today_tag_question }} asked today</a>, <a
                                 href="/questions/tagged/java?sort=newest&amp;days=7"
-                                title="2775 questions tagged java in the last 7 days">2775 this week</a></div>
+                                title="2775 questions tagged java in the last 7 days">{{ tag.tag|last_week_tag_question }} this week</a></div>
                     </div>
                 </div>
             {% endfor %}
