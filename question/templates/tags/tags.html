@@ -1,0 +1,53 @@
+{% extends 'tags/base.html' %}
+{% load tag_filter %}
+<title>{% block title %}all tags{% endblock %}</title>
+{% block taglist %}
+    <div id="tags_list">
+
+        <div id="tags-browser" class="grid-layout">
+
+            {% for tag in tags %}
+                <div class="s-card js-tag-cell grid fd-column">
+                    <div class="grid jc-space-between ai-center mb12">
+                        <div class="grid--cell">
+                            <a href="/questions/tagged/java" class="post-tag"
+                               title="show questions tagged &#39;java&#39;" rel="tag">{{ tag.tag }}</a>
+                        </div>
+                    </div>
+
+                    <div class="grid--cell fc-medium mb12 v-truncate4">
+                        {{ tag.detail }}&hellip;
+                    </div>
+
+                    <div class="mt-auto grid jc-space-between fs-caption fc-black-400">
+                        <div class="grid--cell">{{ tag.tag|count_question }} questions</div>
+                        <div class="grid--cell s-anchors s-anchors__inherit"><a
+                                href="/questions/tagged/java?sort=newest&amp;days=1"
+                                title="495 questions tagged java in the last 24 hours">{{ tag.tag|count_today_tag_question }} asked today</a>, <a
+                                href="/questions/tagged/java?sort=newest&amp;days=7"
+                                title="2775 questions tagged java in the last 7 days">2775 this week</a></div>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+
+        <div class="s-pagination pager fr">
+            <div class="s-pagination--item is-selected">1</div>
+            <a class="s-pagination--item js-pagination-item" href="/tags?page=2&tab=popular" rel=""
+               title="Go to page 2">2</a>
+            <a class="s-pagination--item js-pagination-item" href="/tags?page=3&tab=popular" rel=""
+               title="Go to page 3">3</a>
+            <a class="s-pagination--item js-pagination-item" href="/tags?page=4&tab=popular" rel=""
+               title="Go to page 4">4</a>
+            <a class="s-pagination--item js-pagination-item" href="/tags?page=5&tab=popular" rel=""
+               title="Go to page 5">5</a>
+            <div class="s-pagination--item s-pagination--item__clear">…</div>
+            <a class="s-pagination--item js-pagination-item" href="/tags?page=1803&tab=popular" rel=""
+               title="Go to page 1803">1803</a>
+            <a class="s-pagination--item js-pagination-item" href="/tags?page=2&tab=popular" rel="next"
+               title="Go to page 2"> Next</a></div>
+
+
+    </div>
+{% endblock %}
