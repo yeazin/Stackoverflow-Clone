@@ -11,7 +11,7 @@ from question.models import Question
 # import from basis
 from .forms import QuestionForms
 from .models import Answer, Question
-
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Questions view 
 class AllQuestions(View):
@@ -38,7 +38,16 @@ class SingleQuestion(View):
 # Tags View
 class AllTags(View):
     def get(self, request, *args, **kwargs):
-        tags = Tags.objects.all()
+        all_tags = Tags.objects.all()
+        page = request.GET.get('page', 1)
+        # call django built in pagination class
+        paginator = Paginator(all_tags, per_page=2)
+        try:
+            tags = paginator.page(page)
+        except PageNotAnInteger as e:
+            tags = paginator.page(1)
+        except EmptyPage:
+            tags = Paginator.page(paginator.num_pages)
         context = {
             'tags': tags
         }

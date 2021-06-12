@@ -35,20 +35,35 @@
         </div>
 
         <div class="s-pagination pager fr">
-            <div class="s-pagination--item is-selected">1</div>
-            <a class="s-pagination--item js-pagination-item" href="/tags?page=2&tab=popular" rel=""
-               title="Go to page 2">2</a>
-            <a class="s-pagination--item js-pagination-item" href="/tags?page=3&tab=popular" rel=""
-               title="Go to page 3">3</a>
-            <a class="s-pagination--item js-pagination-item" href="/tags?page=4&tab=popular" rel=""
-               title="Go to page 4">4</a>
-            <a class="s-pagination--item js-pagination-item" href="/tags?page=5&tab=popular" rel=""
-               title="Go to page 5">5</a>
+            {% if tags.has_previous %}
+                <a class="s-pagination--item js-pagination-item"
+                   href="?page={{ tags.previous_page_number }}"
+                   rel="prev"
+                   title="Go to page 1">Prev </a>
+
+            {% endif %}
+
+            {% for i in tags.paginator.page_range %}
+                {% if tags.number == i %}
+                    <a class="s-pagination--item js-pagination-item is-selected" href="" rel=""
+                       title="Go to page 4">{{ i }}</a>
+                {% else %}
+                    <a class="s-pagination--item js-pagination-item" href="?page={{ i }}" rel=""
+                       title="Go to page 4">{{ i }}</a>
+                {% endif %}
+            {% endfor %}
             <div class="s-pagination--item s-pagination--item__clear">…</div>
             <a class="s-pagination--item js-pagination-item" href="/tags?page=1803&tab=popular" rel=""
                title="Go to page 1803">1803</a>
-            <a class="s-pagination--item js-pagination-item" href="/tags?page=2&tab=popular" rel="next"
-               title="Go to page 2"> Next</a></div>
+            {% if tags.has_next %}
+                <a class="s-pagination--item js-pagination-item" href="/tags?page=2&tab=popular" rel="next"
+                   title="Go to page 2"> Next</a>
+            {% else %}
+                <a class="s-pagination--item js-pagination-item" href="/tags?page=2&tab=popular" rel="next"
+                   title="Go to page 2"> Next</a>
+
+            {% endif %}
+        </div>
 
 
     </div>
