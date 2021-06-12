@@ -4,7 +4,7 @@
 {% block taglist %}
     <div id="tags_list">
 
-        <div id="tags-browser" class="grid-layout">
+        <div id="search-results" class="grid-layout">
 
             {% for tag in tags %}
                 <div class="s-card js-tag-cell grid fd-column">
@@ -23,9 +23,11 @@
                         <div class="grid--cell">{{ tag.tag|count_question }} questions</div>
                         <div class="grid--cell s-anchors s-anchors__inherit"><a
                                 href="/questions/tagged/java?sort=newest&amp;days=1"
-                                title="495 questions tagged java in the last 24 hours">{{ tag.tag|count_today_tag_question }} asked today</a>, <a
+                                title="495 questions tagged java in the last 24 hours">{{ tag.tag|count_today_tag_question }}
+                            asked today</a>, <a
                                 href="/questions/tagged/java?sort=newest&amp;days=7"
-                                title="2775 questions tagged java in the last 7 days">{{ tag.tag|last_week_tag_question }} this week</a></div>
+                                title="2775 questions tagged java in the last 7 days">{{ tag.tag|last_week_tag_question }}
+                            this week</a></div>
                     </div>
                 </div>
             {% endfor %}
@@ -50,4 +52,5 @@
 
 
     </div>
+
 {% endblock %}

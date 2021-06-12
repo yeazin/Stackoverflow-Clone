@@ -184,7 +184,7 @@
 
             <div class="grid fw-wrap">
                 <div class="grid--cell ps-relative mb12">
-                    <input id="tagfilter" class="s-input s-input__search h100" autocomplete="off" name="tagfilter"
+                    <input id="live-search" class="s-input s-input__search h100" autocomplete="off" name="live-search"
                            type="text" maxlength="35" placeholder="Filter by tag name" autofocus>
                     <svg aria-hidden="true" class="s-input-icon s-input-icon__search svg-icon iconSearch" width="18"
                          height="18" viewBox="0 0 18 18">
@@ -930,6 +930,24 @@
         s.parentNode.insertBefore(sc, s);
         _comscore.push({c1: "2", c2: "17440561"});
     })();
+</script>
+<script >
+    $('#live-search').keyup(function () {
+        console.log("Key up")
+        $.ajax({
+            type: "GET",
+            url: "{% url 'search_tag' %}",
+            data: {
+                'search_text': $('#live-search').val(),
+                'csrfmiddlewaretoken': '{{ csrf_token }}'
+            },
+            dataType: 'html',
+            success: function (data) {
+                console.log(data)
+                $('#search-results').html(data)
+            }
+        });
+    });
 </script>
 
 
