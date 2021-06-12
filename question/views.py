@@ -10,14 +10,15 @@ from django.contrib import messages
 from question.models import Question
 # import from basis
 from .forms import QuestionForms
-from .models import Answer
+from .models import Answer,Question
 
 
 # Questions view 
 class AllQuestions(View):
     def get(self,request,*args,**kwargs):
+        question_obj = Question.objects.all().order_by('-created_at')
         context={
-
+            'question':question_obj,
         }
         return render (request,'question/questions.html', context)
 

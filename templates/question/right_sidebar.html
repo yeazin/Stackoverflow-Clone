@@ -1,128 +1,50 @@
-<div id="sidebar" role="complementary" aria-label="sidebar">
-<div class="s-sidebarwidget s-sidebarwidget__yellow s-anchors s-anchors__grayscale mb16" data-tracker="cb=1">
-    <ul class="d-block p0 m0">
-                    <div class="s-sidebarwidget--header s-sidebarwidget__small-bold-text fc-light d:fc-black-900 bb bbw1">
-                        The Overflow Blog
-                    </div>
-        <li class="s-sidebarwidget--item grid px16">
-            <div class="grid--cell1 fl-shrink0">
-<svg aria-hidden="true" class="va-text-top svg-icon iconPencilSm" width="14" height="14" viewBox="0 0 14 14"><path d="m11.1 1.71 1.13 1.12c.2.2.2.51 0 .71L11.1 4.7 9.21 2.86l1.17-1.15c.2-.2.51-.2.71 0zM2 10.12l6.37-6.43 1.88 1.88L3.88 12H2v-1.88z"/></svg>            </div>
-            <div class="grid--cell wmn0 ow-break-word">
-                <a href="https://stackoverflow.blog/2021/06/09/using-low-code-tools-to-iterate-products-faster/" class="js-gps-track" data-ga="[&quot;community bulletin board&quot;,&quot;The Overflow Blog&quot;,&quot;https://stackoverflow.blog/2021/06/09/using-low-code-tools-to-iterate-products-faster/&quot;,null,null]" data-gps-track="communitybulletin.click({ priority: 1, position: 0 })">Using low-code tools to iterate products faster</a>
-            </div>
-        </li>
-        <li class="s-sidebarwidget--item grid px16">
-            <div class="grid--cell1 fl-shrink0">
-<svg aria-hidden="true" class="va-text-top svg-icon iconPencilSm" width="14" height="14" viewBox="0 0 14 14"><path d="m11.1 1.71 1.13 1.12c.2.2.2.51 0 .71L11.1 4.7 9.21 2.86l1.17-1.15c.2-.2.51-.2.71 0zM2 10.12l6.37-6.43 1.88 1.88L3.88 12H2v-1.88z"/></svg>            </div>
-            <div class="grid--cell wmn0 ow-break-word">
-                <a href="https://stackoverflow.blog/2021/06/08/podcast-345-a-good-software-tutorial-explains-the-how-a-great-one-explains-the-why/" class="js-gps-track" title="Podcast 345: A good software tutorial explains the How. A great one explains the Why." data-ga="[&quot;community bulletin board&quot;,&quot;The Overflow Blog&quot;,&quot;https://stackoverflow.blog/2021/06/08/podcast-345-a-good-software-tutorial-explains-the-how-a-great-one-explains-the-why/&quot;,null,null]" data-gps-track="communitybulletin.click({ priority: 1, position: 1 })">Podcast 345: A good software tutorial explains the How. A great one explains&hellip;</a>
-            </div>
-        </li>
-                    <div class="s-sidebarwidget--header s-sidebarwidget__small-bold-text fc-light d:fc-black-900 bb bbw1">
-                        Featured on Meta
-                    </div>
-        <li class="s-sidebarwidget--item grid px16">
-            <div class="grid--cell1 fl-shrink0">
-<div class="favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>            </div>
-            <div class="grid--cell wmn0 ow-break-word">
-                <a href="https://meta.stackoverflow.com/questions/407914/take-the-2021-developer-survey" class="js-gps-track" data-ga="[&quot;community bulletin board&quot;,&quot;Featured on Meta&quot;,&quot;https://meta.stackoverflow.com/questions/407914/take-the-2021-developer-survey&quot;,null,null]" data-gps-track="communitybulletin.click({ priority: 6, position: 2 })">Take the 2021 Developer Survey</a>
-            </div>
-        </li>
-    </ul>
-</div>
+
+    <div id="sidebar" role="complementary" aria-label="sidebar">
 
 
-<div class="module js-gps-related-tags" id="related-tags">
-    <h4 id="h-related-tags">Related Tags</h4>
-<div data-name="javascript">
-<a href="/questions/tagged/javascript" class="post-tag no-tag-menu" title="show questions tagged &#39;javascript&#39;" rel="tag">javascript</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">2229902</span> </span>
+        <div class="module js-gps-related-tags" id="related-tags">
+                <h4 id="h-related-tags">Related Tags</h4>
+
+    {% for t in tag %}
+    <div data-name="javascript">
+        <a href="#" class="post-tag no-tag-menu"  rel="tag">{{ t }}</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count"> {{ t.q_count }}</span> </span>
+    </div>
+    
+    {% endfor %}
+
+
+    <a href="#"
+       class="show-more js-show-more js-gps-track"
+       data-gps-track="related_tags.click({ item_type:2 })">
+        more related tags
+    </a>
+
+        </div>
+
+    <div id="hot-network-questions" class="module tex2jax_ignore">
+
+<h4>
+    <a href="https://stackexchange.com/questions?tab=hot"
+       class="js-gps-track s-link s-link__inherit" 
+       data-gps-track="posts_hot_network.click({ item_type:1, location:9 })">
+        Hot Network Questions
+    </a>
+</h4>
+<ul>
+        <li >
+            <div class="favicon favicon-chinese" title="Chinese Language Stack Exchange"></div><a href="https://chinese.stackexchange.com/questions/45206/what-does-%e9%ab%98%e9%ab%98%e7%9f%ae%e7%9f%ae-mean" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:9, target_site:371 }); posts_hot_network.click({ item_type:2, location:9 })">
+                What does &#x9AD8;&#x9AD8;&#x77EE;&#x77EE; mean?
+            </a>
+
+        </li>
+</ul>
+
+
+    <a href="#" 
+       class="show-more js-show-more js-gps-track" 
+       data-gps-track="posts_hot_network.click({ item_type:3, location:9 })">
+        more hot questions
+    </a>
 </div>
-<div data-name="java">
-<a href="/questions/tagged/java" class="post-tag no-tag-menu" title="show questions tagged &#39;java&#39;" rel="tag">java</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">1782498</span> </span>
-</div>
-<div data-name="python">
-<a href="/questions/tagged/python" class="post-tag no-tag-menu" title="show questions tagged &#39;python&#39;" rel="tag">python</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">1739217</span> </span>
-</div>
-<div data-name="c#">
-<a href="/questions/tagged/c%23" class="post-tag no-tag-menu" title="show questions tagged &#39;c#&#39;" rel="tag">c#</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">1483566</span> </span>
-</div>
-<div data-name="php">
-<a href="/questions/tagged/php" class="post-tag no-tag-menu" title="show questions tagged &#39;php&#39;" rel="tag">php</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">1406121</span> </span>
-</div>
-<div data-name="android">
-<a href="/questions/tagged/android" class="post-tag no-tag-menu" title="show questions tagged &#39;android&#39;" rel="tag">android</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">1340121</span> </span>
-</div>
-<div data-name="html">
-<a href="/questions/tagged/html" class="post-tag no-tag-menu" title="show questions tagged &#39;html&#39;" rel="tag">html</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">1078162</span> </span>
-</div>
-<div data-name="jquery">
-<a href="/questions/tagged/jquery" class="post-tag no-tag-menu" title="show questions tagged &#39;jquery&#39;" rel="tag">jquery</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">1017020</span> </span>
-</div>
-<div data-name="c&#x2B;&#x2B;">
-<a href="/questions/tagged/c%2b%2b" class="post-tag no-tag-menu" title="show questions tagged &#39;c++&#39;" rel="tag">c++</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">727841</span> </span>
-</div>
-<div data-name="css">
-<a href="/questions/tagged/css" class="post-tag no-tag-menu" title="show questions tagged &#39;css&#39;" rel="tag">css</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">721454</span> </span>
-</div>
-<div class="dno js-hidden" data-name="ios">
-<a href="/questions/tagged/ios" class="post-tag no-tag-menu" title="show questions tagged &#39;ios&#39;" rel="tag">ios</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">657141</span> </span>
-</div>
-<div class="dno js-hidden" data-name="mysql">
-<a href="/questions/tagged/mysql" class="post-tag no-tag-menu" title="show questions tagged &#39;mysql&#39;" rel="tag">mysql</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">628337</span> </span>
-</div>
-<div class="dno js-hidden" data-name="sql">
-<a href="/questions/tagged/sql" class="post-tag no-tag-menu" title="show questions tagged &#39;sql&#39;" rel="tag">sql</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">593596</span> </span>
-</div>
-<div class="dno js-hidden" data-name="r">
-<a href="/questions/tagged/r" class="post-tag no-tag-menu" title="show questions tagged &#39;r&#39;" rel="tag">r</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">406763</span> </span>
-</div>
-<div class="dno js-hidden" data-name="node.js">
-<a href="/questions/tagged/node.js" class="post-tag no-tag-menu" title="show questions tagged &#39;node.js&#39;" rel="tag">node.js</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">390918</span> </span>
-</div>
-<div class="dno js-hidden" data-name="arrays">
-<a href="/questions/tagged/arrays" class="post-tag no-tag-menu" title="show questions tagged &#39;arrays&#39;" rel="tag">arrays</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">369553</span> </span>
-</div>
-<div class="dno js-hidden" data-name="asp.net">
-<a href="/questions/tagged/asp.net" class="post-tag no-tag-menu" title="show questions tagged &#39;asp.net&#39;" rel="tag">asp.net</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">363268</span> </span>
-</div>
-<div class="dno js-hidden" data-name="c">
-<a href="/questions/tagged/c" class="post-tag no-tag-menu" title="show questions tagged &#39;c&#39;" rel="tag">c</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">360146</span> </span>
-</div>
-<div class="dno js-hidden" data-name="ruby-on-rails">
-<a href="/questions/tagged/ruby-on-rails" class="post-tag no-tag-menu" title="show questions tagged &#39;ruby-on-rails&#39;" rel="tag">ruby-on-rails</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">326571</span> </span>
-</div>
-<div class="dno js-hidden" data-name="json">
-<a href="/questions/tagged/json" class="post-tag no-tag-menu" title="show questions tagged &#39;json&#39;" rel="tag">json</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">320886</span> </span>
-</div>
-<div class="dno js-hidden" data-name="reactjs">
-<a href="/questions/tagged/reactjs" class="post-tag no-tag-menu" title="show questions tagged &#39;reactjs&#39;" rel="tag">reactjs</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">312804</span> </span>
-</div>
-<div class="dno js-hidden" data-name=".net">
-<a href="/questions/tagged/.net" class="post-tag no-tag-menu" title="show questions tagged &#39;.net&#39;" rel="tag">.net</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">308684</span> </span>
-</div>
-<div class="dno js-hidden" data-name="sql-server">
-<a href="/questions/tagged/sql-server" class="post-tag no-tag-menu" title="show questions tagged &#39;sql-server&#39;" rel="tag">sql-server</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">305134</span> </span>
-</div>
-<div class="dno js-hidden" data-name="swift">
-<a href="/questions/tagged/swift" class="post-tag no-tag-menu" title="show questions tagged &#39;swift&#39;" rel="tag">swift</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">297308</span> </span>
-</div>
-<div class="dno js-hidden" data-name="objective-c">
-<a href="/questions/tagged/objective-c" class="post-tag no-tag-menu" title="show questions tagged &#39;objective-c&#39;" rel="tag">objective-c</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">291752</span> </span>
-</div>
-<a href="#"
-class="show-more js-show-more js-gps-track"
-data-gps-track="related_tags.click({ item_type:2 })">
-more related tags
-</a>
-<script>
-StackExchange.ready(function () {
-var $div = $('#h-related-tags').parent();
-$div.find('.js-show-more').click(function () {
-    $div.find('.js-hidden').show();
-    $(this).remove();
-    return false;
-});
-});
-</script>
 
 </div>
