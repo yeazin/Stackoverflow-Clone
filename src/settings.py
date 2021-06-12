@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'question',
     'account',
     # extra app
-    'ckeditor'
+    'ckeditor',
+    'django.contrib.humanize'
 ]
 
 MIDDLEWARE = [
@@ -67,6 +68,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'question.context_processors.GlobalVariable' # Question Context Processors 
             ],
         },
     },

@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+
+
+<html class="html__responsive  html__fixed-top-bar">
+
+<head>
+
+    <title>visual studio code - Jest snapshot error, even though I&#39;m not using snapshots - Stack Overflow</title>
+    <link rel="shortcut icon" href="https://cdn.sstatic.net/Sites/stackoverflow/Img/favicon.ico?v=ec617d715196">
+    <link rel="apple-touch-icon" href="https://cdn.sstatic.net/Sites/stackoverflow/Img/apple-touch-icon.png?v=c78bd457575a">
+    <link rel="image_src" href="https://cdn.sstatic.net/Sites/stackoverflow/Img/apple-touch-icon.png?v=c78bd457575a"> 
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="/opensearch.xml">
+    <link rel="canonical" href="https://stackoverflow.com/questions/67945778/jest-snapshot-error-even-though-im-not-using-snapshots" />
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0">
+    <meta property="og:type" content= "website" />
+    <meta property="og:url" content="https://stackoverflow.com/questions/67945778/jest-snapshot-error-even-though-im-not-using-snapshots"/>
+    <meta property="og:site_name" content="Stack Overflow" />
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="https://cdn.sstatic.net/Sites/stackoverflow/Img/apple-touch-icon@2.png?v=73d79a89bded" />
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:domain" content="stackoverflow.com"/>
+    <meta name="twitter:title" property="og:title" itemprop="name" content="Jest snapshot error, even though I&#x27;m not using snapshots" />
+    <meta name="twitter:description" property="og:description" itemprop="description" content="Recently I started getting this error from the Jest auto-run-watch (Jest plugin) in VSCode.&#xA;Test suite failed to run&#xA;&#xA;    Cannot find module &#x27;semver&#x27; from &#x27;node_modules/jest-snapshot/build/" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.sstatic.net/Js/stub.en.js?v=b6b81fff6fef"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.sstatic.net/Shared/stacks.css?v=18ec1a31c3b1">
+    <link rel="stylesheet" type="text/css" href="https://cdn.sstatic.net/Sites/stackoverflow/primary.css?v=1c3f5fb04641">
+
+
+        <link rel="alternate" type="application/atom+xml" title="Feed for question &#x27;Jest snapshot error, even though I&#x27;m not using snapshots&#x27;" href="/feeds/question/67945778">
+        <meta name="twitter:app:country" content="US" />
+        <meta name="twitter:app:name:iphone" content="Stack Exchange iOS" />
+        <meta name="twitter:app:id:iphone" content="871299723" />
+        <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/67945778/jest-snapshot-error-even-though-im-not-using-snapshots" />
+        <meta name="twitter:app:name:ipad" content="Stack Exchange iOS" />
+        <meta name="twitter:app:id:ipad" content="871299723" />
+        <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/67945778/jest-snapshot-error-even-though-im-not-using-snapshots" />
+        <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+        <meta name="twitter:app:url:googleplay" content="https://stackoverflow.com/questions/67945778/jest-snapshot-error-even-though-im-not-using-snapshots">
+        <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+    <script>
+        StackExchange.ready(function () {
+
+                StackExchange.using("snippets", function () {
+                    StackExchange.snippets.initSnippetRenderer();
+                });
+                
+            StackExchange.using("postValidation", function () {
+                StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+            });
+
+
+            StackExchange.question.init({showAnswerHelp:true,totalCommentCount:0,shownCommentCount:0,enableTables:true,questionId:67945778});
+
+            styleCode();
+
+                StackExchange.realtime.subscribeToQuestion('1', '67945778');
+                StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.js-post-body'); });
+
+
+
+        });
+    </script>
+
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.sstatic.net/Shared/Channels/channels.css?v=89163e79f6d2">
+    
+    
+    
+
+
+<script>
+    StackExchange.init({"locale":"en","serverTime":1623474407,"routeName":"Questions/Show","stackAuthUrl":"https://stackauth.com","networkMetaHostname":"meta.stackexchange.com","site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"id":1,"cookieDomain":".stackoverflow.com","childUrl":"https://meta.stackoverflow.com","styleCodeWithHighlightjs":true,"negativeVoteScoreFloor":null,"enableSocialMediaInSharePopup":true,"protocol":"https"},"user":{"fkey":"ae7f4bbedc1735f1b69c60ad87855d2b196ae70caf58efc9ade6b04d2f0e4438","tid":"d53e8e44-9273-02b6-228e-058625df7dba","rep":0,"isAnonymous":true,"isAnonymousNetworkWide":true},"events":{"postType":{"question":1},"postEditionSection":{"title":1,"body":2,"tags":3}},"story":{"minCompleteBodyLength":75,"likedTagsMaxLength":300,"dislikedTagsMaxLength":300},"jobPreferences":{"maxNumDeveloperRoles":2,"maxNumIndustries":4},"svgIconPath":"https://cdn.sstatic.net/Img/stacks-icons","svgIconHash":"5b6352b54769"}, {"userProfile":{"openGraphAPIKey":"4a307e43-b625-49bb-af15-ffadf2bda017"},"userMessaging":{"showNewFeatureNotice":true},"tags":{},"subscriptions":{"defaultBasicMaxTrueUpSeats":250,"defaultFreemiumMaxTrueUpSeats":50,"defaultMaxTrueUpSeats":1000},"snippets":{"renderDomain":"stacksnippets.net","snippetsEnabled":true},"site":{"allowImageUploads":true,"enableImgurHttps":true,"enableUserHovercards":true,"forceHttpsImages":true,"styleCode":true},"questions":{"enableQuestionTitleLengthLiveWarning":true,"maxTitleSize":150,"questionTitleLengthStartLiveWarningChars":50},"intercom":{"appId":"inf0secd","hostBaseUrl":"https://stacksnippets.net"},"paths":{},"monitoring":{"clientTimingsAbsoluteTimeout":30000,"clientTimingsDebounceTimeout":1000},"mentions":{"maxNumUsersInDropdown":50},"markdown":{"enableTables":true},"legal":{"oneTrustConfigId":"c3d9f1e3-55f3-4eba-b268-46cee4c6789c"},"flags":{"allowRetractingCommentFlags":true,"allowRetractingFlags":true},"elections":{"opaVoteResultsBaseUrl":"https://www.opavote.com/results/"},"comments":{},"accounts":{"currentPasswordRequiredForChangingStackIdPassword":true}});
+    StackExchange.using.setCacheBreakers({"js/adops.en.js":"22a9bd59b1e9","js/ask.en.js":"469e6156d3bf","js/begin-edit-event.en.js":"b6f47dd7a88c","js/copy-transpiled.en.js":"58ae8f1f764a","js/cm.en.js":"490f304371e5","js/events.en.js":"2a4f4ca672d0","js/explore-qlist.en.js":"a6f836ff8aa6","js/full-anon.en.js":"40b9599517e9","js/full.en.js":"93f39369dd69","js/help.en.js":"300463afbc58","js/highlightjs-loader.en.js":"17552072fdc0","js/inline-tag-editing.en.js":"e5a2bcfcd89d","js/keyboard-shortcuts.en.js":"e35006ff7113","js/markdown-it-loader.en.js":"2e311abea8d2","js/modElections.en.js":"b4255642e818","js/mobile.en.js":"ed3df618ee8f","js/moderator.en.js":"f4dd208f0852","js/postCollections-transpiled.en.js":"844f16f7e0e9","js/post-validation.en.js":"0a2a4270f67d","js/prettify-full.en.js":"e2d74e41fd86","js/question-editor.en.js":"","js/review.en.js":"cccf4f47ecc5","js/review-v2-transpiled.en.js":"e1791cab23e5","js/revisions.en.js":"2ae1657f6037","js/stacks-editor.en.js":"4fdc10942ca1","js/tageditor.en.js":"0ffdcf3fc9c4","js/tageditornew.en.js":"2a4485c32d40","js/tagsuggestions.en.js":"4d2d70ee1e16","js/unlimited-transpiled.en.js":"8389b11ad5bb","js/wmd.en.js":"9d8426197af6","js/snippet-javascript-codemirror.en.js":"731ec29bbeec"});
+    StackExchange.using("gps", function() {
+         StackExchange.gps.init(true);
+    });
+</script>
+<noscript id="noscript-css"><style>body,.top-bar{margin-top:1.9em}</style></noscript>
+</head>
+<body class="question-page unified-theme">
+<div id="notify-container"></div>
+<div id="custom-header"></div>
+
+{% include 'main_base/header.html' %}
+
+
+
+
+
+
+
+
+{% include 'main_base/footer.html' %}
