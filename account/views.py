@@ -68,6 +68,19 @@ class LoginView(View):
         if request.user.is_authenticated:
             return redirect('dashboard')
         return render(request,'user_info/login.html')
+    
+    def post (self,request,*args,**kwargs):
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request,username=username,password=password)
+        if user is not None:
+            login(request,user)
+            return redirect('home')
+        else:
+            messages.warning(request,'Username or Password Didn`t Match')
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+        
 
 # Logout View
 class LogoutView(View):
