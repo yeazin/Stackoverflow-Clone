@@ -2,9 +2,9 @@
 {% load tag_filter %}
 <title>{% block title %}all tags{% endblock %}</title>
 {% block taglist %}
-    <div id="tags_list">
+    <div id="tags_list" class="search-results">
 
-        <div id="search-results" class="grid-layout">
+        <div class="grid-layout">
 
             {% for tag in tags %}
                 <div class="s-card js-tag-cell grid fd-column">
@@ -34,36 +34,34 @@
 
         </div>
 
-        <div class="s-pagination pager fr">
-            {% if tags.has_previous %}
-                <a class="s-pagination--item js-pagination-item"
-                   href="?page={{ tags.previous_page_number }}"
-                   rel="prev"
-                   title="Go to page 1">Prev </a>
+        {% if tags %}
+            <div class="s-pagination pager fr">
+                {% if tags.has_previous %}
+                    <a class="s-pagination--item js-pagination-item"
+                       href="?page={{ tags.previous_page_number }}"
+                       rel="prev"
+                       title="Go to page 1">Prev </a>
 
-            {% endif %}
-
-            {% for i in tags.paginator.page_range %}
-                {% if tags.number == i %}
-                    <a class="s-pagination--item js-pagination-item is-selected" href="" rel=""
-                       title="Go to page 4">{{ i }}</a>
-                {% else %}
-                    <a class="s-pagination--item js-pagination-item" href="?page={{ i }}" rel=""
-                       title="Go to page 4">{{ i }}</a>
                 {% endif %}
-            {% endfor %}
-            <div class="s-pagination--item s-pagination--item__clear">…</div>
-            <a class="s-pagination--item js-pagination-item" href="/tags?page=1803&tab=popular" rel=""
-               title="Go to page 1803">1803</a>
-            {% if tags.has_next %}
-                <a class="s-pagination--item js-pagination-item" href="/tags?page=2&tab=popular" rel="next"
-                   title="Go to page 2"> Next</a>
-            {% else %}
-                <a class="s-pagination--item js-pagination-item" href="/tags?page=2&tab=popular" rel="next"
-                   title="Go to page 2"> Next</a>
 
-            {% endif %}
-        </div>
+                {% for i in tags.paginator.page_range %}
+                    {% if tags.number == i %}
+                        <a class="s-pagination--item js-pagination-item is-selected" href="" rel=""
+                           title="Go to page 4">{{ i }}</a>
+                    {% else %}
+                        <a class="s-pagination--item js-pagination-item" href="?page={{ i }}" rel=""
+                           title="Go to page 4">{{ i }}</a>
+                    {% endif %}
+                {% endfor %}
+                <div class="s-pagination--item s-pagination--item__clear">…</div>
+                <a class="s-pagination--item js-pagination-item" href="/tags?page=1803&tab=popular" rel=""
+                   title="Go to page 1803">1803</a>
+                {% if tags.has_next %}
+                    <a class="s-pagination--item js-pagination-item" href="/tags?page=2&tab=popular" rel="next"
+                       title="Go to page 2"> Next</a>
+                {% endif %}
+            </div>
+        {% endif %}
 
 
     </div>
