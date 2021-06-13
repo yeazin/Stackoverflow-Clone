@@ -1,6 +1,6 @@
 <script >
     $('#live-search').keyup(function () {
-        console.log("Key up")
+        {#console.log("Key up")#}
         $.ajax({
             type: "GET",
             url: "{% url 'search_tag' %}",

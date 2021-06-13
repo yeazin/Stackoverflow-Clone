@@ -5,142 +5,170 @@
 
 
 
-<div id="content" class="snippet-hidden">
+    <div id="content" class="snippet-hidden">
 
-    <div id="mainbar" role="main" aria-labelledby="h-all-questions">
-            
-        <div class="grid">
-            <div class="grid fl1 mb24">
-                       <h1 class="grid--cell fs-headline1 mb0">
-Questions tagged [{{ tag_name }}]        </h1>
+        <div id="mainbar" role="main" aria-labelledby="h-all-questions">
 
-            </div>
-            <div class="ml12 aside-cta grid--cell print:d-none">
+            <div class="grid">
+                <div class="grid fl1 mb24">
+                    <h1 class="grid--cell fs-headline1 mb0">
+                        Questions tagged [{{ tag_name }}] </h1>
+
+                </div>
+                <div class="ml12 aside-cta grid--cell print:d-none">
                     <a href="/questions/ask" class="ws-nowrap s-btn s-btn__primary">
-    Ask Question
-</a>
+                        Ask Question
+                    </a>
 
+                </div>
             </div>
-        </div>
 
 
-        <div class="mb24">
-            <p> {{ tag_name.detail }}         </p>
-            <div class=" grid gs12 jc-space-between ai-center fw-wrap">
+            <div class="mb24">
+                <p> {{ tag_name.detail }}         </p>
+                <div class=" grid gs12 jc-space-between ai-center fw-wrap">
 
+                </div>
             </div>
-    </div>
 
-                <div data-controller="se-uql" data-se-uql-id="" data-se-uql-sanitize-tag-query="false">
-                    <div class="grid ai-center jc-space-between mb12 sm:fd-column sm:ai-stretch">
-                        <div class="fs-body3 grid--cell fl1 mr12 sm:mr0 sm:mb12">
-                            {{ t_count }}
-                            questions
-                        </div>
-                
-                        <div class="uql-nav grid--cell"
-                             data-action="se-uql-list:edit-current-requested@document->se-uql#toggleEditor">
-                            <div class="grid ai-center jc-space-between">
-                                <div class="js-uql-navigation s-btn-group grid--cell mr16 ff-row-nowrap">
-                                        <a class="s-btn s-btn__muted s-btn__outlined s-btn__sm grid d-flex is-selected" data-nav-value="Newest" href="/questions?tab=Newest" data-shortcut="N">
-                                            <div class="grid--cell">Newest</div>
-                                        </a>
-                                        <a class="s-btn s-btn__muted s-btn__outlined s-btn__sm grid d-flex" data-nav-value="Active" href="/questions?tab=Active" data-shortcut="A">
-                                            <div class="grid--cell">Active</div>
-                                        </a>
-                                        <a class="s-btn s-btn__muted s-btn__outlined s-btn__sm grid d-flex uql-nav--expanded-item" data-nav-value="Unanswered" href="/questions?tab=Unanswered" data-shortcut="U">
-                                            <div class="grid--cell">Unanswered</div>
-                                        </a>
-                                </div>
-                
+            <div data-controller="se-uql" data-se-uql-id="" data-se-uql-sanitize-tag-query="false">
+                <div class="grid ai-center jc-space-between mb12 sm:fd-column sm:ai-stretch">
+                    <div class="fs-body3 grid--cell fl1 mr12 sm:mr0 sm:mb12">
+                        {{ t_count }}
+                        questions
+                    </div>
+
+                    <div class="uql-nav grid--cell"
+                         data-action="se-uql-list:edit-current-requested@document->se-uql#toggleEditor">
+                        <div class="grid ai-center jc-space-between">
+                            <div class="js-uql-navigation s-btn-group grid--cell mr16 ff-row-nowrap">
+                                <a class="s-btn s-btn__muted s-btn__outlined s-btn__sm grid d-flex is-selected"
+                                   data-nav-value="Newest" href="/questions?tab=Newest" data-shortcut="N">
+                                    <div class="grid--cell">Newest</div>
+                                </a>
+                                <a class="s-btn s-btn__muted s-btn__outlined s-btn__sm grid d-flex"
+                                   data-nav-value="Active" href="/questions?tab=Active" data-shortcut="A">
+                                    <div class="grid--cell">Active</div>
+                                </a>
+                                <a class="s-btn s-btn__muted s-btn__outlined s-btn__sm grid d-flex uql-nav--expanded-item"
+                                   data-nav-value="Unanswered" href="/questions?tab=Unanswered" data-shortcut="U">
+                                    <div class="grid--cell">Unanswered</div>
+                                </a>
                             </div>
-                
-                
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+            {% for q in question %}
+                <div id="questions" class=" flush-left">
+
+                    <div class="question-summary" id="question-summary-67900134">
+                        <div class="statscontainer">
+                            <div class="stats">
+                                <div class="vote">
+                                    <div class="votes">
+                                        <span class="vote-count-post "><strong>0</strong></span>
+                                        <div class="viewcount">votes</div>
+                                    </div>
+                                </div>
+                                <div class="status unanswered">
+                                    <strong>0</strong>answers
+                                </div>
+                            </div>
+                            <div class="views " title="2 views">
+                                {{ q.views_count }} views
+                            </div>
+                        </div>
+
+
+                        <div class="summary">
+                            <h3><a href="{% url 'single_question' q.id %}" class="question-hyperlink">{{ q.title }}</a>
+                            </h3>
+                            <div class="excerpt">
+                                {{ q.detail|truncatechars:250 }}
+                            </div>
+                            <div class="subcommunities float-left">
+
+                            </div>
+                            <div class="tags t-reactjs t-npm t-yarn">
+                                {% for t in q.tags.all %}
+                                    <a href="{% url 'single_tag' t.id %}" class="post-tag"
+                                       title="show questions tagged &#39;yarn&#39;" rel="tag"> {{ t }}</a>
+                                {% endfor %}
+                            </div>
+
+
+                            <div class="started fr">
+                                <div class="user-info user-hover">
+                                    <div class="user-action-time">
+                                        {% load humanize %}
+                                        asked <span title="2021-06-09 08:12:54Z"
+                                                    class="relativetime"> {{ q.created_at | naturaltime }}</span>
+                                    </div>
+                                    <div class="user-gravatar32">
+                                        <a href="/users/10191105/jane-fred">
+                                            <div class="gravatar-wrapper-32"><img
+                                                    src="https://www.gravatar.com/avatar/1077506c8b839ceefbc34a8444e78317?s=32&amp;d=identicon&amp;r=PG&amp;f=1"
+                                                    alt="" width="32" height="32" class="bar-sm"></div>
+                                        </a>
+                                    </div>
+                                    <div class="user-details">
+                                        <a href="/users/10191105/jane-fred">{{ q.user.user.username }}</a>
+                                        <div class="-flair">
+                                            <span class="reputation-score" title="reputation score "
+                                                  dir="ltr">789</span><span title="3 gold badges"
+                                                                            aria-hidden="true"><span
+                                                class="badge1"></span><span class="badgecount">3</span></span><span
+                                                class="v-visible-sr">3 gold badges</span><span title="15 silver badges"
+                                                                                               aria-hidden="true"><span
+                                                class="badge2"></span><span class="badgecount">15</span></span><span
+                                                class="v-visible-sr">15 silver badges</span><span
+                                                title="31 bronze badges" aria-hidden="true"><span class="badge3"></span><span
+                                                class="badgecount">31</span></span><span class="v-visible-sr">31 bronze badges</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
-                
-                </div>
 
-{% for q in question %}
-<div id="questions" class=" flush-left">
 
-    <div class="question-summary" id="question-summary-67900134">
-        <div class="statscontainer">
-            <div class="stats">
-                <div class="vote">
-                    <div class="votes">
-                        <span class="vote-count-post "><strong>0</strong></span>
-                        <div class="viewcount">votes</div>
-                    </div>
                 </div>
-                <div class="status unanswered">
-                    <strong>0</strong>answers
-                </div>
-            </div>
-            <div class="views " title="2 views">
-        {{ q.views_count }} views
-    </div>
-        </div>
-    
-    
-        <div class="summary">
-            <h3><a href="{% url 'single_question' q.id %}" class="question-hyperlink">{{ q.title }}</a></h3>
-            <div class="excerpt">
-{{q.detail|truncatechars:250 }}
-            </div>
-            <div class="subcommunities float-left">
-                
-            </div>
-            <div class="tags t-reactjs t-npm t-yarn">
-                {% for t in q.tags.all %}
-                <a href="{% url 'single_tag' t.id %}" class="post-tag" title="show questions tagged &#39;yarn&#39;" rel="tag"> {{ t }}</a> 
-                {% endfor %}
-            </div>
-            
+            {% endfor %}
 
-            
-            <div class="started fr">
-                <div class="user-info user-hover">
-        <div class="user-action-time">
-            {% load humanize %}
-            asked <span title="2021-06-09 08:12:54Z" class="relativetime"> {{ q.created_at | naturaltime}}</span>
-        </div>
-        <div class="user-gravatar32">
-            <a href="/users/10191105/jane-fred"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/1077506c8b839ceefbc34a8444e78317?s=32&amp;d=identicon&amp;r=PG&amp;f=1" alt="" width="32" height="32" class="bar-sm"></div></a>
-        </div>
-        <div class="user-details">
-            <a href="/users/10191105/jane-fred">{{ q.user.user.username }}</a>
-            <div class="-flair">
-                <span class="reputation-score" title="reputation score " dir="ltr">789</span><span title="3 gold badges" aria-hidden="true"><span class="badge1"></span><span class="badgecount">3</span></span><span class="v-visible-sr">3 gold badges</span><span title="15 silver badges" aria-hidden="true"><span class="badge2"></span><span class="badgecount">15</span></span><span class="v-visible-sr">15 silver badges</span><span title="31 bronze badges" aria-hidden="true"><span class="badge3"></span><span class="badgecount">31</span></span><span class="v-visible-sr">31 bronze badges</span>
+            <br class="cbt"/>
+            <div class="s-pagination page-sizer fr">
+                <a href="/questions?tab=newest&amp;pagesize=15" title="Show 15 items per page"
+                   class="s-pagination--item is-selected">15</a>
+                <a href="/questions?tab=newest&amp;pagesize=30" title="Show 30 items per page"
+                   class="s-pagination--item">30</a>
+                <a href="/questions?tab=newest&amp;pagesize=50" title="Show 50 items per page"
+                   class="s-pagination--item">50</a>
+                <span class="s-pagination--item s-pagination--item__clear">per page</span>
             </div>
+            <div class="s-pagination pager fl">
+                <div class="s-pagination--item is-selected">1</div>
+                <a class="s-pagination--item js-pagination-item" href="/questions?tab=newest&page=2" rel=""
+                   title="Go to page 2">2</a>
+                <a class="s-pagination--item js-pagination-item" href="/questions?tab=newest&page=3" rel=""
+                   title="Go to page 3">3</a>
+                <a class="s-pagination--item js-pagination-item" href="/questions?tab=newest&page=4" rel=""
+                   title="Go to page 4">4</a>
+                <a class="s-pagination--item js-pagination-item" href="/questions?tab=newest&page=5" rel=""
+                   title="Go to page 5">5</a>
+                <div class="s-pagination--item s-pagination--item__clear">…</div>
+                <a class="s-pagination--item js-pagination-item" href="/questions?tab=newest&page=1422650" rel=""
+                   title="Go to page 1422650">1422650</a>
+                <a class="s-pagination--item js-pagination-item" href="/questions?tab=newest&page=2" rel="next"
+                   title="Go to page 2"> Next</a></div>
+
         </div>
     </div>
-    
-            </div>
-        </div>
-    </div>
-    
-    
-          </div>
-{% endfor %}
 
-          <br class="cbt" />
-          <div class="s-pagination page-sizer fr">
-            <a href="/questions?tab=newest&amp;pagesize=15" title="Show 15 items per page" class="s-pagination--item is-selected">15</a>
-            <a href="/questions?tab=newest&amp;pagesize=30" title="Show 30 items per page" class="s-pagination--item">30</a>
-            <a href="/questions?tab=newest&amp;pagesize=50" title="Show 50 items per page" class="s-pagination--item">50</a>
-            <span class="s-pagination--item s-pagination--item__clear">per page</span>
-          </div>
-          <div class="s-pagination pager fl">
-          <div class="s-pagination--item is-selected">1</div>
-          <a class="s-pagination--item js-pagination-item" href="/questions?tab=newest&page=2" rel="" title="Go to page 2">2</a>
-          <a class="s-pagination--item js-pagination-item" href="/questions?tab=newest&page=3" rel="" title="Go to page 3">3</a>
-          <a class="s-pagination--item js-pagination-item" href="/questions?tab=newest&page=4" rel="" title="Go to page 4">4</a>
-          <a class="s-pagination--item js-pagination-item" href="/questions?tab=newest&page=5" rel="" title="Go to page 5">5</a>
-          <div class="s-pagination--item s-pagination--item__clear">…</div>
-          <a class="s-pagination--item js-pagination-item" href="/questions?tab=newest&page=1422650" rel="" title="Go to page 1422650">1422650</a>
-          <a class="s-pagination--item js-pagination-item" href="/questions?tab=newest&page=2" rel="next" title="Go to page 2"> Next</a></div>
-          
-          </div>
-          
 {% endblock %}
