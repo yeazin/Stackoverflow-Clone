@@ -38,7 +38,7 @@ class SingleQuestion(View):
 # Tags View
 class AllTags(View):
     def get(self, request, *args, **kwargs):
-        all_tags = Tags.objects.all()
+        all_tags = Tags.objects.all().order_by('tag')
         page = request.GET.get('page', 1)
         # call django built in pagination class
         paginator = Paginator(all_tags, per_page=2)
@@ -53,6 +53,18 @@ class AllTags(View):
         }
         return render(request, 'tags/tags.html', context)
 
+# single Tag view
+class SingleTagView(View):
+    def get(self,request,id,*args,**kwargs):
+        tag_obj = get_object_or_404(Tags,id=id)
+        tag_obj_question = Question.objects.filter(tags=tag_obj)
+        question_count = tag_obj_question.count()
+        context ={
+            'tag_name':tag_obj,
+            'question':tag_obj_question,
+            't_count':question_count
+        }
+        return render(request,'tags/single_tag.html',context)
 
 def search_tag(request):
     if request.method == "GET":

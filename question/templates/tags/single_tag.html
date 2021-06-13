@@ -9,20 +9,32 @@
 
     <div id="mainbar" role="main" aria-labelledby="h-all-questions">
             
-                <div class="grid">
-                        <h1 class="grid--cell fl1 fs-headline1 mb24">All Questions</h1>
-                    <div class="ml12 aside-cta grid--cell print:d-none">
-                            <a href="/questions/ask" class="ws-nowrap s-btn s-btn__primary">
-            Ask Question
-        </a>
-    
-                    </div>
-                </div>
+        <div class="grid">
+            <div class="grid fl1 mb24">
+                       <h1 class="grid--cell fs-headline1 mb0">
+Questions tagged [{{ tag_name }}]        </h1>
+
+            </div>
+            <div class="ml12 aside-cta grid--cell print:d-none">
+                    <a href="/questions/ask" class="ws-nowrap s-btn s-btn__primary">
+    Ask Question
+</a>
+
+            </div>
+        </div>
+
+
+        <div class="mb24">
+            <p> {{ tag_name.detail }}         </p>
+            <div class=" grid gs12 jc-space-between ai-center fw-wrap">
+
+            </div>
+    </div>
 
                 <div data-controller="se-uql" data-se-uql-id="" data-se-uql-sanitize-tag-query="false">
                     <div class="grid ai-center jc-space-between mb12 sm:fd-column sm:ai-stretch">
                         <div class="fs-body3 grid--cell fl1 mr12 sm:mr0 sm:mb12">
-                            {{ question_count }}
+                            {{ t_count }}
                             questions
                         </div>
                 
@@ -80,7 +92,6 @@
                 
             </div>
             <div class="tags t-reactjs t-npm t-yarn">
-                
                 {% for t in q.tags.all %}
                 <a href="{% url 'single_tag' t.id %}" class="post-tag" title="show questions tagged &#39;yarn&#39;" rel="tag"> {{ t }}</a> 
                 {% endfor %}

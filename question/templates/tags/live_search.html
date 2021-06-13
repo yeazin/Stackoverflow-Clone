@@ -1,0 +1,18 @@
+<script >
+    $('#live-search').keyup(function () {
+        console.log("Key up")
+        $.ajax({
+            type: "GET",
+            url: "{% url 'search_tag' %}",
+            data: {
+                'search_text': $('#live-search').val(),
+                'csrfmiddlewaretoken': '{{ csrf_token }}'
+            },
+            dataType: 'html',
+            success: function (data) {
+                console.log(data)
+                $('.search-results').html(data)
+            }
+        });
+    });
+</script>
