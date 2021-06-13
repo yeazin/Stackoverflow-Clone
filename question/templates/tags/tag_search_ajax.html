@@ -1,26 +1,58 @@
 {% load tag_filter %}
-{% for tag in tags %}
-    <div class="s-card js-tag-cell grid fd-column">
-        <div class="grid jc-space-between ai-center mb12">
-            <div class="grid--cell">
-                <a href="/questions/tagged/java" class="post-tag"
-                   title="show questions tagged &#39;java&#39;" rel="tag">{{ tag.tag }}</a>
+<div class="grid-layout">
+
+    {% for tag in tags %}
+        <div class="s-card js-tag-cell grid fd-column">
+            <div class="grid jc-space-between ai-center mb12">
+                <div class="grid--cell">
+                    <a href="/questions/tagged/java" class="post-tag"
+                       title="show questions tagged &#39;java&#39;" rel="tag">{{ tag.tag }}</a>
+                </div>
+            </div>
+
+            <div class="grid--cell fc-medium mb12 v-truncate4">
+                {{ tag.detail }}&hellip;
+            </div>
+
+            <div class="mt-auto grid jc-space-between fs-caption fc-black-400">
+                <div class="grid--cell">{{ tag.tag|count_question }} questions</div>
+                <div class="grid--cell s-anchors s-anchors__inherit"><a
+                        href="/questions/tagged/java?sort=newest&amp;days=1"
+                        title="495 questions tagged java in the last 24 hours">{{ tag.tag|count_today_tag_question }}
+                    asked today</a>, <a
+                        href="/questions/tagged/java?sort=newest&amp;days=7"
+                        title="2775 questions tagged java in the last 7 days">{{ tag.tag|last_week_tag_question }}
+                    this week</a></div>
             </div>
         </div>
+    {% endfor %}
 
-        <div class="grid--cell fc-medium mb12 v-truncate4">
-            {{ tag.detail }}&hellip;
-        </div>
+</div>
 
-        <div class="mt-auto grid jc-space-between fs-caption fc-black-400">
-            <div class="grid--cell">{{ tag.tag|count_question }} questions</div>
-            <div class="grid--cell s-anchors s-anchors__inherit"><a
-                    href="/questions/tagged/java?sort=newest&amp;days=1"
-                    title="495 questions tagged java in the last 24 hours">{{ tag.tag|count_today_tag_question }}
-                asked today</a>, <a
-                    href="/questions/tagged/java?sort=newest&amp;days=7"
-                    title="2775 questions tagged java in the last 7 days">{{ tag.tag|last_week_tag_question }}
-                this week</a></div>
-        </div>
-    </div>
-{% endfor %}
+<div class="s-pagination pager fr">
+    {% if tags.has_previous %}
+        <a class="s-pagination--item js-pagination-item"
+           href="?page={{ tags.previous_page_number }}"
+           rel="prev"
+           title="Go to page 1">Prev </a>
+
+    {% endif %}
+
+    {% for i in tags.paginator.page_range %}
+        {% if tags.number == i %}
+            <a class="s-pagination--item js-pagination-item is-selected" href="" rel=""
+               title="Go to page 4">{{ i }}</a>
+        {% else %}
+            <a class="s-pagination--item js-pagination-item" href="?page={{ i }}" rel=""
+               title="Go to page 4">{{ i }}</a>
+        {% endif %}
+    {% endfor %}
+    <div class="s-pagination--item s-pagination--item__clear">…</div>
+    <a class="s-pagination--item js-pagination-item" href="/tags?page=1803&tab=popular" rel=""
+       title="Go to page 1803">1803</a>
+    {% if tags.has_next %}
+        <a class="s-pagination--item js-pagination-item" href="/tags?page=2&tab=popular" rel="next"
+           title="Go to page 2"> Next</a>
+
+    {% endif %}
+</div>

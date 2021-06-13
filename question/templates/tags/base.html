@@ -151,7 +151,7 @@
 <body class="tags-page unified-theme">
 <div id="notify-container"></div>
 <div id="custom-header"></div>
-{% include 'tags/header.html' %}
+{% include 'main_base/header.html' %}
 
 <script>
     StackExchange.ready(function () {
@@ -931,24 +931,8 @@
         _comscore.push({c1: "2", c2: "17440561"});
     })();
 </script>
-<script >
-    $('#live-search').keyup(function () {
-        console.log("Key up")
-        $.ajax({
-            type: "GET",
-            url: "{% url 'search_tag' %}",
-            data: {
-                'search_text': $('#live-search').val(),
-                'csrfmiddlewaretoken': '{{ csrf_token }}'
-            },
-            dataType: 'html',
-            success: function (data) {
-                console.log(data)
-                $('#search-results').html(data)
-            }
-        });
-    });
-</script>
+{% include 'tags/live_search.html' %}
+{#{% include  %}#}
 
 
 <div id="onetrust-consent-sdk" class="d-none"></div>
