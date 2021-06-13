@@ -10,8 +10,8 @@
                 <div class="left-sidebar js-unpinned-left-sidebar" data-can-be="left-sidebar"
                      data-is-here-when="sm"></div>
             </div>
-            <a href="https://stackoverflow.com" class="-logo js-gps-track"
-               data-gps-track="top_nav.click({is_current:false, location:24, destination:8})">
+            <a href="/" class="-logo js-gps-track"
+               >
                 <span class="-img _glyph">Stack Overflow</span>
             </a>
 
@@ -46,62 +46,7 @@
                    data-ga="[&quot;top navigation&quot;,&quot;learn more - teams&quot;,null,null,null]">For Teams</a>
             </li>
         </ol>
-        <div class="s-popover ws2 mtn2 p0"
-             id="products-popover"
-             role="menu"
-             aria-hidden="true">
-            <div class="s-popover--arrow"></div>
-            <ol class="list-reset s-anchors s-anchors__inherit">
-                <li class="m6">
-                    <a href="/questions" class="bar-sm p6 d-block h:bg-black-100 js-gps-track"
-                       data-gps-track="top_nav.products.click({location:24, destination:2})"
-                       data-ga="[&quot;top navigation&quot;,&quot;public qa submenu click&quot;,null,null,null]">
-                        <span class="fs-body1 d-block">Stack Overflow</span>
-                        <span class="fs-caption d-block fc-light">Public questions &amp; answers</span>
-                    </a>
-                </li>
-                <li class="m6">
-                    <a href="/teams" class="bar-sm p6 d-block h:bg-black-100 js-gps-track"
-                       data-gps-track="top_nav.products.click({location:24, destination:3})"
-                       data-ga="[&quot;top navigation&quot;,&quot;teams submenu click&quot;,null,null,null]">
-                        <span class="fs-body1 d-block">Stack Overflow for Teams</span>
-                        <span class="fs-caption d-block fc-light">Where developers &amp; technologists share private knowledge with coworkers</span>
-                    </a>
-                </li>
-                <li class="m6">
-                    <a href="/jobs?so_source=ProductsMenu&so_medium=StackOverflow"
-                       class="bar-sm p6 d-block h:bg-black-100 js-gps-track"
-                       data-gps-track="top_nav.products.click({location:24, destination:9})"
-                       data-ga="[&quot;top navigation&quot;,&quot;jobs submenu click&quot;,null,null,null]">
-                        <span class="fs-body1 d-block">Jobs</span>
-                        <span class="fs-caption d-block fc-light">Programming &amp; related technical career opportunities</span>
-                    </a>
-                </li>
-                <li class="m6">
-                    <a href="https://stackoverflow.com/talent" class="bar-sm p6 d-block h:bg-black-100 js-gps-track"
-                       data-gps-track="top_nav.products.click({location:24, destination:5})"
-                       data-ga="[&quot;top navigation&quot;,&quot;talent submenu click&quot;,null,null,null]">
-                        <span class="fs-body1 d-block">Talent</span>
-                        <span class="fs-caption d-block fc-light">Recruit tech talent &amp; build your employer brand</span>
-                    </a>
-                </li>
-                <li class="m6">
-                    <a href="https://stackoverflow.com/advertising"
-                       class="bar-sm p6 d-block h:bg-black-100 js-gps-track"
-                       data-gps-track="top_nav.products.click({location:24, destination:6})"
-                       data-ga="[&quot;top navigation&quot;,&quot;advertising submenu click&quot;,null,null,null]">
-                        <span class="fs-body1 d-block">Advertising</span>
-                        <span class="fs-caption d-block fc-light">Reach developers &amp; technologists worldwide</span>
-                    </a>
-                </li>
-                <li class="bg-black-025 bt bc-black-075 py6 px6 bbr-sm">
-                    <a href="/company" class="fc-light d-block py6 px6 h:fc-black-800 js-gps-track"
-                       data-gps-track="top_nav.products.click({location:24, destination:7})"
-                       data-ga="[&quot;top navigation&quot;,&quot;about submenu click&quot;,null,null,null]">About the
-                        company</a>
-                </li>
-            </ol>
-        </div>
+
 
         <form id="search" role="search" action=/search class="grid--cell fl-grow1 searchbar px12 js-searchbar "
               autocomplete="off">
@@ -150,99 +95,17 @@
             </a></li>
 
             <li class="-ctas">
-                <a href="https://stackoverflow.com/users/login?ssrc=head&returnurl=https%3a%2f%2fstackoverflow.com%2ftags"
+                <a href="{% url 'login' %}"
                    class="login-link s-btn s-btn__filled py8 js-gps-track" rel="nofollow"
                    data-gps-track="login.click"
                    data-ga="[&quot;top navigation&quot;,&quot;login button click&quot;,null,null,null]">Log in</a>
-                <a href="https://stackoverflow.com/users/signup?ssrc=head&returnurl=%2fusers%2fstory%2fcurrent"
+                <a href="{% url 'register' %}"
                    class="login-link s-btn s-btn__primary py8" rel="nofollow"
                    data-ga="[&quot;sign up&quot;,&quot;Sign Up Navigation&quot;,&quot;Header&quot;,null,null]">Sign
                     up</a>
 
             </li>
 
-            <li class="js-topbar-dialog-corral" role="presentation">
-
-
-                <div class="topbar-dialog siteSwitcher-dialog dno" role="menu">
-                    <div class="header">
-                        <h3>
-                            <a href="https://stackoverflow.com">current community</a>
-                        </h3>
-                    </div>
-                    <div class="modal-content bg-powder-050">
-                        <ul class="current-site">
-                            <li class="grid">
-                                <div class="fl1">
-                                    <a href="https://stackoverflow.com"
-                                       class="current-site-link site-link js-gps-track grid gs8 gsx"
-                                       data-id="1"
-                                       data-gps-track="site_switcher.click({ item_type:3 })">
-                                        <div class="favicon favicon-stackoverflow site-icon grid--cell"
-                                             title="Stack Overflow"></div>
-                                        <span class="grid--cell fl1">
-            Stack Overflow
-        </span>
-                                    </a>
-
-                                </div>
-                                <div class="related-links">
-                                    <a href="https://stackoverflow.com/help" class="js-gps-track"
-                                       data-gps-track="site_switcher.click({ item_type:14 })">help</a>
-                                    <a href="https://chat.stackoverflow.com/?tab=site&amp;host=stackoverflow.com"
-                                       class="js-gps-track"
-                                       data-gps-track="site_switcher.click({ item_type:6 })">chat</a>
-                                </div>
-
-                            </li>
-                            <li class="related-site grid">
-                                <div class="L-shaped-icon-container">
-                                    <span class="L-shaped-icon"></span>
-                                </div>
-
-                                <a href="https://meta.stackoverflow.com"
-                                   class=" site-link js-gps-track grid gs8 gsx"
-                                   data-id="552"
-                                   data-gps-track="site.switch({ target_site:552, item_type:3 }),site_switcher.click({ item_type:4 })">
-                                    <div class="favicon favicon-stackoverflowmeta site-icon grid--cell"
-                                         title="Meta Stack Overflow"></div>
-                                    <span class="grid--cell fl1">
-            Meta Stack Overflow
-        </span>
-                                </a>
-
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="header" id="your-communities-header">
-                        <h3>
-                            your communities </h3>
-
-                    </div>
-                    <div class="modal-content" id="your-communities-section">
-
-                        <div class="call-to-login">
-                            <a href="https://stackoverflow.com/users/signup?ssrc=site_switcher&amp;returnurl=%2fusers%2fstory%2fcurrent"
-                               class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:10 })">Sign
-                                up</a> or <a
-                                href="https://stackoverflow.com/users/login?ssrc=site_switcher&amp;returnurl=https%3a%2f%2fstackoverflow.com%2ftags"
-                                class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:11 })">log
-                            in</a> to customize your list.
-                        </div>
-                    </div>
-
-                    <div class="header">
-                        <h3><a href="https://stackexchange.com/sites">more stack exchange communities</a>
-                        </h3>
-                        <a href="https://stackoverflow.blog" class="fr">company blog</a>
-                    </div>
-                    <div class="modal-content">
-                        <div class="child-content"></div>
-                    </div>
-                </div>
-
-            </li>
         </ol>
 
     </div>
