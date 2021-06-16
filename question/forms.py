@@ -10,7 +10,7 @@ class QuestionForms(ModelForm):
         fields =['title','tags','detail']
     
     widgets ={
-        'title':forms.TextInput(attrs={'class':'form-control','id':'title','placeholder':'Question Title here'}),
+        'title':forms.TextInput(attrs={'class':'js-post-title-field','id':'title','placeholder':'e.g. Is there an R function for finding the index of an element in a vector?'}),
         'tags':forms.MultipleChoiceField(choices=Tags)
         
     }

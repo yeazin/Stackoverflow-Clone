@@ -96,7 +96,7 @@ class LogoutView(View):
 # Create Questions
 class CreateQuestion(View):
     def get(self,request,*args,**kwrargs):
-        q_forms = QuestionForms
+        q_forms = QuestionForms()
         context={
             'forms':q_forms
         }

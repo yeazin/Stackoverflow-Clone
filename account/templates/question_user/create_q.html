@@ -1,5 +1,395 @@
-<h1>
-    hey this is create Quesiton
-</h1>
-{{ forms.as_p }}
-{{ forms.media }}
+
+{% extends 'main_base/base.html' %}
+{% block add_script %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.sstatic.net/Js/stub.en.js?v=b6b81fff6fef"></script>
+
+<link rel="stylesheet" type="text/css" href="https://cdn.sstatic.net/Shared/stacks.css?v=18ec1a31c3b1">
+<link rel="stylesheet" type="text/css" href="https://cdn.sstatic.net/Sites/stackoverflow/primary.css?v=1c3f5fb04641">
+<link rel="stylesheet" type="text/css" href="https://cdn.sstatic.net/Sites/stackoverflow/secondary.css?v=f4ceed477aac">
+
+
+<script src="https://cdn.sstatic.net/Js/ask.en.js?v=469e6156d3bf"></script>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="https://cdn.sstatic.net/Shared/Channels/channels.css?v=89163e79f6d2">
+{% endblock %}
+{% block title%} Ask a Question- Stackoverflow {% endblock %}
+
+
+{% block body %}
+<div class="container">
+
+    <div id="content" class="pt0 snippet-hidden">
+
+<div class="grid ai-center py24 bg-no-repeat bg-right-bottom wide:bg-image-ask-v2 wide:h-ask-v2-background">
+    <div class="fs-headline1">
+        Ask a public question
+    </div>
+</div>
+
+<div class="grid ai-start jc-space-between md:fd-column md:ai-stretch">
+    <div class="grid--cell fl1 wmn0">
+
+
+
+        <form id="post-form" class="post-form js-post-form" action="/questions/ask/submit" method="post" data-validation-warnings="" data-validation-errors="" data-form-type="question" data-has-answer="false" data-delay-validation="true" data-required-tags="" data-force-heartbeat-at-body-length="220" data-enable-analytics="true" data-enable-warning-analytics="true" data-inbox-subscription="2" data-referrer="0">
+
+            <div id="question-form">
+                <div class="bg-white bar-sm bs-md p16 ba bc-black-100">
+                    <div id="post-title" class="ps-relative mb16">
+                        <div class="grid fl1 fd-column js-stacks-validation">
+                            <label class="d-block s-label mb4" for="title">
+                                Title
+                                <div class="grid">
+                                    <p class="s-description mt2 grid--cell9">Be specific and imagine you’re asking a question to another person</p>
+                                    <div class="grid--cell3 ta-right text-counter mr0 fs-caption mt2 fl1 cool"></div>
+                                </div>
+                            </label>
+                            <div class="fl1 ps-relative">
+                                {% for forms in forms %}
+                                {{ forms.title }}
+                                {{ forms.detail }}
+                                {{ forms.tags }}
+                                {% endfor %}
+                                <input id="title" name="title" type="text" maxlength="300" tabindex="100" placeholder="e.g. Is there an R function for finding the index of an element in a vector?" class="s-input js-post-title-field" value="" data-min-length="15" data-max-length="150" autocomplete="off">
+                                
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+
+
+
+                    
+
+
+
+
+
+<div id="post-editor" class="post-editor js-post-editor mt0 mb16">
+
+
+        <div class="ps-relative">
+                <label class="s-label mb4 d-block" for="wmd-input">
+                    Body
+
+                        <p class="s-description mt2">Include all the information someone would need to answer your question</p>
+                </label>
+  
+        </div>
+
+
+</div>
+
+
+                    <div class="ps-relative" id="tag-editor">
+
+
+<div class="ps-relative">
+    <div class="form-item p0 js-stacks-validation js-tag-editor-container">
+        <div class="grid ai-center jc-space-between">
+            <label for="tageditor-replacing-tagnames--input" class="s-label mb4 d-block grid--cell fl1">
+                Tags
+                    <div class="s-description mt2">Add up to 5 tags to describe what your question is about</div>
+            </label>
+                <a class="grid--cell s-btn p8" aria-controls="how-to-tag-popover" data-controller="s-popover" data-action="click->s-popover#toggle" data-s-popover-placement="top-end">
+                    <svg aria-hidden="true" class="svg-icon iconHelpSm" width="14" height="14" viewBox="0 0 14 14"><path d="M7 1C3.74 1 1 3.77 1 7c0 3.26 2.77 6 6 6 3.27 0 6-2.73 6-6s-2.73-6-6-6zm1.06 9.06c-.02.63-.48 1.02-1.1 1-.57-.02-1.03-.43-1.01-1.06.02-.63.5-1.04 1.08-1.02.6.02 1.05.45 1.03 1.08zm.73-3.07-.47.3c-.2.15-.36.36-.44.6a3.6 3.6 0 00-.08.65c0 .04-.03.14-.16.14h-1.4c-.14 0-.16-.09-.16-.13-.01-.5.11-.99.36-1.42A4.6 4.6 0 017.7 6.07c.15-.1.21-.21.3-.33.18-.2.28-.47.28-.74.01-.67-.53-1.14-1.18-1.14-.9 0-1.18.7-1.18 1.46H4.2c0-1.17.31-1.92.98-2.36a3.5 3.5 0 011.83-.44c.88 0 1.58.16 2.2.62.58.42.88 1.02.88 1.82 0 .5-.17.9-.43 1.24-.15.2-.44.47-.86.79h-.01z"></path></svg>
+                </a>
+
+        </div>
+        <div class="ps-relative">
+            <div>
+                <input id="tagnames" class="s-input box-border js-post-tags-field" name="tagnames" type="text" size="60" value="" tabindex="103" placeholder="e.g. (ruby-on-rails .net ios)" style="display: none;"><div class="js-tag-editor tag-editor multi-line s-input" style="padding: 0px 9.1px; box-sizing: border-box; margin-top: 0px; margin-bottom: 0px; width: 100%;"><span></span><input type="text" autocomplete="off" tabindex="103" placeholder="e.g. (ruby-on-rails .net ios)" id="tageditor-replacing-tagnames--input" class="s-input js-tageditor-replacing" style="width: 19px;"><span></span></div>
+            </div>
+        </div>
+        <div class="s-input-message mt4 d-none js-stacks-validation-message"></div>
+    </div>
+</div>
+
+                            <div class="js-tag-suggestions hmn0"></div>
+
+
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="js-visible-before-review">
+                <div class="grid gsx gs4 ai-center mt32">
+                    <button class="grid--cell s-btn s-btn__primary s-btn__icon ws-nowrap js-begin-review-button js-gps-track" type="button" tabindex="120" data-gps-track="askpage.review_click">
+                        Review your question
+                    </button>
+                    <button class="grid--cell s-btn s-btn__danger ws-nowrap discard-question dno">Discard draft</button>
+                </div>
+            </div>
+            <div class="js-visible-during-review d-none">
+                <div class="js-show-on-question-only js-show-on-question-and-answer">
+                        
+    
+                </div>
+
+                <div class="js-show-on-question-only">
+                    <div class="grid gsx gs4 ai-center mt16">
+                        <button id="submit-button" class="grid--cell s-btn s-btn__primary s-btn__icon ws-nowrap js-submit-button" type="submit" tabindex="120" autocomplete="off">
+                            Post your question
+                        </button>
+                        <button class="grid--cell s-btn s-btn__danger ws-nowrap discard-question dno">Discard draft</button>
+                    </div>
+                </div>
+                <div class="js-show-on-question-and-answer dno">
+                    <div class="grid gsx gs4 ai-center mt16">
+                        <button id="submit-button-42" class="grid--cell s-btn s-btn__primary s-btn__icon ws-nowrap js-submit-button" type="submit" tabindex="120" autocomplete="off">
+                            Post your question and answer
+                        </button>
+                        <button class="grid--cell s-btn s-btn__danger ws-nowrap discard-question dno">Discard draft</button>
+                    </div>
+                </div>
+                <div class="js-show-on-question-only js-show-on-question-and-answer">
+                    <div class="js-general-error pt16 fs-body1 fw-bold fc-red-600 mbn16 d-none"></div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <aside class="fl-shrink0">
+        
+<div class="ws3 ml24 md:d-none" data-controller="right-rail" data-action="s-expandable-control:show->right-rail#onShow s-expandable-control:hide->right-rail#onHide">
+    <div class="s-sidebarwidget s-anchors mb24 js-visible-before-review">
+        <div class="s-sidebarwidget--header">
+            Step 1: Draft your question
+        </div>
+        <div class="s-sidebarwidget--content d-block bg-white pb0 bbr-sm" data-is-here-when="lg" id="how-to-ask">
+            <div class="mb16">
+                <p>The community is here to help you with specific coding, algorithm, or language problems.</p>
+<p>Avoid asking opinion-based questions.</p>
+            </div>
+                <ol class="list-reset mxn16">
+                        <li class="bb bc-black-075">
+                            <button class="s-btn s-btn__unset grid px16 py12 js-gps-track w100 c-pointer" type="button" data-controller="s-expandable-control" data-target="right-rail.step" aria-expanded="true" aria-controls="ask-guidance-expandable-0" data-gps-track="askpage.open_how_to_ask_step({ number: 1 })">
+                                <div class="grid--cell fl1 grid ai-center">
+                                    <div class="grid--cell">
+                                                        <img src="https://cdn.sstatic.net/Img/list-1.svg?v=e8dd475ba207" width="16" height="16" alt="1.">
+
+                                    </div>
+                                    <span class="grid--cell ml12 fw-bold">Summarize the problem</span>
+                                </div>
+                                <div>
+                                    <div class="d-none js-arrow-down"><svg aria-hidden="true" class="svg-icon iconArrowDownAlt" width="18" height="18" viewBox="0 0 18 18"><path d="m16.01 6.43-1.4-1.41L9 10.6 3.42 5l-1.4 1.42 7 7 7-7z"></path></svg></div>
+                                    <div class=" js-arrow-up "><svg aria-hidden="true" class="svg-icon iconArrowUpAlt" width="18" height="18" viewBox="0 0 18 18"><path d="m16.01 11.62-1.4 1.4L9 7.45l-5.59 5.59-1.4-1.41 7-7 7 7z"></path></svg></div>
+                                </div>
+                            </button>
+                            <div class="s-expandable is-expanded mx16" id="ask-guidance-expandable-0">
+                                <div class="s-expandable--content pb12 ml16 pl4">
+                                    <ul class="ml24 mb0"><li><p>Include details about your goal</p></li><li><p>Describe expected and actual results</p></li><li><p class="mb0">Include any error messages</p></li></ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="bb bc-black-075">
+                            <button class="s-btn s-btn__unset grid px16 py12 js-gps-track w100 c-pointer" type="button" data-controller="s-expandable-control" data-target="right-rail.step" aria-expanded="false" aria-controls="ask-guidance-expandable-1" data-gps-track="askpage.open_how_to_ask_step({ number: 2 })">
+                                <div class="grid--cell fl1 grid ai-center">
+                                    <div class="grid--cell">
+                                                        <img src="https://cdn.sstatic.net/Img/list-2.svg?v=9382fc2c3631" width="16" height="16" alt="2.">
+
+                                    </div>
+                                    <span class="grid--cell ml12 fw-bold">Describe what you’ve tried</span>
+                                </div>
+                                <div>
+                                    <div class=" js-arrow-down"><svg aria-hidden="true" class="svg-icon iconArrowDownAlt" width="18" height="18" viewBox="0 0 18 18"><path d="m16.01 6.43-1.4-1.41L9 10.6 3.42 5l-1.4 1.42 7 7 7-7z"></path></svg></div>
+                                    <div class="d-none js-arrow-up "><svg aria-hidden="true" class="svg-icon iconArrowUpAlt" width="18" height="18" viewBox="0 0 18 18"><path d="m16.01 11.62-1.4 1.4L9 7.45l-5.59 5.59-1.4-1.41 7-7 7 7z"></path></svg></div>
+                                </div>
+                            </button>
+                            <div class="s-expandable mx16" id="ask-guidance-expandable-1">
+                                <div class="s-expandable--content pb12 ml16 pl12">
+                                    Show what you’ve tried and tell us what you found (on this site or elsewhere) and why it didn’t meet your needs. You can get better answers when you provide research.
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <button class="s-btn s-btn__unset grid px16 py12 js-gps-track w100 c-pointer" type="button" data-controller="s-expandable-control" data-target="right-rail.step" aria-expanded="false" aria-controls="ask-guidance-expandable-2" data-gps-track="askpage.open_how_to_ask_step({ number: 3 })">
+                                <div class="grid--cell fl1 grid ai-center">
+                                    <div class="grid--cell">
+                                                        <img src="https://cdn.sstatic.net/Img/list-3.svg?v=323a95564232" width="16" height="16" alt="3.">
+
+                                    </div>
+                                    <span class="grid--cell ml12 fw-bold">Show some code</span>
+                                </div>
+                                <div>
+                                    <div class=" js-arrow-down"><svg aria-hidden="true" class="svg-icon iconArrowDownAlt" width="18" height="18" viewBox="0 0 18 18"><path d="m16.01 6.43-1.4-1.41L9 10.6 3.42 5l-1.4 1.42 7 7 7-7z"></path></svg></div>
+                                    <div class="d-none js-arrow-up "><svg aria-hidden="true" class="svg-icon iconArrowUpAlt" width="18" height="18" viewBox="0 0 18 18"><path d="m16.01 11.62-1.4 1.4L9 7.45l-5.59 5.59-1.4-1.41 7-7 7 7z"></path></svg></div>
+                                </div>
+                            </button>
+                            <div class="s-expandable mx16" id="ask-guidance-expandable-2">
+                                <div class="s-expandable--content pb12 ml16 pl12">
+                                    When appropriate, share the minimum amount of code others need to reproduce your problem (also called a <a href="/help/minimal-reproducible-example" target="_blank">minimum, reproducible example</a>)
+                                </div>
+                            </div>
+                        </li>
+                </ol>
+        </div>
+    </div>
+        <div class="s-sidebarwidget s-anchors mb24 js-visible-before-review">
+            <div class="s-sidebarwidget--header bbr-sm js-widget-header">
+                <button class="s-btn s-btn__unset grid js-gps-track w100 c-pointer" type="button" data-controller="s-expandable-control" aria-expanded="false" aria-controls="other-site-links" data-gps-track="askpage.open_guidance_section({number: 2})">
+                    <div class="grid--cell fl1 ta-left">
+                        Have a non-programming question?
+                    </div>
+                    <div class="grid--cell">
+                        <div class="js-arrow-down s-link s-link__inherit"><svg aria-hidden="true" class="svg-icon iconArrowDownAlt" width="18" height="18" viewBox="0 0 18 18"><path d="m16.01 6.43-1.4-1.41L9 10.6 3.42 5l-1.4 1.42 7 7 7-7z"></path></svg></div>
+                        <div class="d-none js-arrow-up s-link s-link__inherit"><svg aria-hidden="true" class="svg-icon iconArrowUpAlt" width="18" height="18" viewBox="0 0 18 18"><path d="m16.01 11.62-1.4 1.4L9 7.45l-5.59 5.59-1.4-1.41 7-7 7 7z"></path></svg></div>
+                    </div>
+                </button>
+            </div>
+            <div class="s-expandable" id="other-site-links">
+                <div class="s-expandable--content">
+                    <div class="s-sidebarwidget--content d-block bg-white bbr-sm">
+                        <p>
+                            <a class="js-gps-track" data-gps-track="askpage.click_guidance_link({target: 'superuser'})" href="https://superuser.com/help/on-topic" target="_blank">Super user</a><br>
+                            Troubleshooting hardware and software issues
+                        </p>
+                        <p>
+                            <a class="js-gps-track" data-gps-track="askpage.click_guidance_link({target: 'softwareengineering'})" href="https://softwareengineering.stackexchange.com" target="_blank">Software engineering</a><br>
+                            For software development methods and process questions
+                        </p>
+                        <p>
+                            <a class="js-gps-track" data-gps-track="askpage.click_guidance_link({target: 'hardwarerecs'})" href="https://hardwarerecs.stackexchange.com/help/on-topic" target="_blank">Hardware recommendations</a>
+                        </p>
+                        <p>
+                            <a class="js-gps-track" data-gps-track="askpage.click_guidance_link({target: 'softwarerecs'})" href="https://softwarerecs.stackexchange.com/help/on-topic" target="_blank">Software recommendations</a>
+                        </p>
+                        <p class="mb0">Ask questions about the site on <a class="js-gps-track" data-gps-track="askpage.click_guidance_link({target: 'meta'})" href="https://meta.stackoverflow.com" target="_blank">meta</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="s-sidebarwidget s-anchors js-visible-before-review">
+            <div class="s-sidebarwidget--header bbr-sm js-widget-header">
+                <button class="s-btn s-btn__unset grid js-gps-track w100 c-pointer" type="button" data-controller="s-expandable-control" aria-expanded="false" aria-controls="more-helpful-links" data-gps-track="askpage.open_guidance_section({number: 3})">
+                    <div class="grid--cell fl1 ta-left">
+More helpful links                    </div>
+                    <div class="grid--cell">
+                        <div class="js-arrow-down s-link s-link__inherit"><svg aria-hidden="true" class="svg-icon iconArrowDownAlt" width="18" height="18" viewBox="0 0 18 18"><path d="m16.01 6.43-1.4-1.41L9 10.6 3.42 5l-1.4 1.42 7 7 7-7z"></path></svg></div>
+                        <div class="js-arrow-up d-none s-link s-link__inherit"><svg aria-hidden="true" class="svg-icon iconArrowUpAlt" width="18" height="18" viewBox="0 0 18 18"><path d="m16.01 11.62-1.4 1.4L9 7.45l-5.59 5.59-1.4-1.41 7-7 7 7z"></path></svg></div>
+                    </div>
+                </button>
+            </div>
+            <div class="s-expandable" id="more-helpful-links">
+                <div class="s-expandable--content">
+                    <div class="s-sidebarwidget--content d-block bg-white bbr-sm">
+                        <p>
+                            Find more information about <a class="js-gps-track" data-gps-track="askpage.click_guidance_link({target: 'how-to-ask'})" href="/help/how-to-ask" target="_blank">how to ask a good question here</a>
+                        </p>
+                        <p class="mb0">
+                            Visit the <a class="js-gps-track" data-gps-track="askpage.click_guidance_link({target: 'help'})" href="/help" target="_blank">help center</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <div class="js-post-review-summary-container s-sidebarwidget s-anchors js-visible-during-review d-none">
+        <div class="s-sidebarwidget--header">
+            Step 2: Review your question
+        </div>
+        <div class="s-sidebarwidget--content d-block bg-white bbr-sm" data-is-here-when="lg" id="review-your-question">
+            <div class="js-post-review-summary">
+                <div class="js-loading-message">
+                    <p class="mb0">Loading…</p>
+                </div>
+                <div class="js-success-no-warnings grid d-none">
+                    <div class="grid--cell mr16">
+                        <img width="20" height="20" src="https://cdn.sstatic.net/Img/ask/success.svg?v=b9c8125e2f1c" alt="Success">
+                    </div>
+                    <div class="grid--cell mr4">
+                        <div class="d-flex ai-center fw-bold" style="min-height: 20px">
+                            <div>Your question is ready to publish!</div>
+                        </div>
+                        <p class="mt6 mb0">Our automated system checked for ways to improve your question and found none.</p>
+                    </div>
+                </div>
+                <div class="js-error-container grid d-none">
+                    <div class="grid--cell mr16">
+                        <img width="20" height="20" src="https://cdn.sstatic.net/Img/ask/error.svg?v=b373711635d0" alt="Error">
+                    </div>
+                    <div class="grid--cell mr4">
+                        <div class="d-flex ai-center fw-bold" style="min-height: 20px">
+                            <div>Your question couldn’t be submitted</div>
+                        </div>
+                        <p class="js-error-message mt6 mb0"></p>
+                    </div>
+                </div>
+                <div class="js-warning-and-error-separator mxn16 my16 bb bc-black-075 d-none"></div>
+                <div class="js-warning-container d-none">
+                    <p class="js-unresolved-warnings-message">Tips to fix your question and improve your chances of getting answers:</p>
+                    <p class="js-resolved-warnings-message">Looks like you’re ready to publish!</p>
+                    <div class="js-warning-list"></div>
+                    <script class="js-warning-template" type="text/html">
+                        <div class="js-separator mxn16 my16 bb bc-black-075"></div>
+                        <div class="grid">
+                            <div class="grid--cell mr16">
+                                <img class="js-success-icon" width="20" height="20" src="https://cdn.sstatic.net/Img/ask/success.svg?v=b9c8125e2f1c" alt="Resolved issue" />
+                                <img class="js-warning-icon" width="20" height="20" src="https://cdn.sstatic.net/Img/ask/warning.svg?v=336fe0dd3be2" alt="Unresolved issue" />
+                            </div>
+                            <div class="grid--cell mr4">
+                                <div class="d-flex ai-center fw-bold" style="min-height: 20px">
+                                    <div class="js-guidance-title"></div>
+                                </div>
+                                <div class="pt6 js-guidance-body grid fd-column gsy gs8"></div>
+                            </div>
+                        </div>
+                    </script>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="s-expandable"><div class="s-expandable--content"></div></div>
+</div>
+
+<script>
+    StackExchange.ready(function () {
+
+        Stacks.addController('right-rail', {
+
+            targets: ['step'],
+
+            onShow: function (evt) {
+                this.update($(evt.target), true);
+
+                if (this.stepTargets.indexOf(evt.target !== -1)) {
+                    this.stepTargets.forEach(function (step) {
+                        if (step !== evt.target && step.getAttribute('aria-expanded') === 'true') {
+                            // DOM click
+                            step.click();
+                        }
+                    });
+                }
+            },
+
+            onHide: function (evt) {
+                this.update($(evt.target), false);
+            },
+
+            update: function ($target, visible) {
+                $target.find('.js-arrow-up').toggleClass('d-none', !visible);
+                $target.find('.js-arrow-down').toggleClass('d-none', !!visible);
+                $target.closest('.js-widget-header').toggleClass('bbr-sm', !visible);
+            }
+        });
+    });
+</script>
+
+    </aside>
+</div>
+
+
+
+<!-- next Copy-->
+
+
+</div>
+</div>
+{% endblock %}
