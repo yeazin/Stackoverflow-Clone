@@ -11,7 +11,7 @@ urlpatterns = [
     path('super/admin/', admin.site.urls),
     path('user/', include('account.urls')),
     path('',include('question.urls')),
-    path('admin/', include('samin.urls')),
+    path('admin/', include('sadmin.urls')),
 
     path('home', views.HomeView.as_view(),name ='home')
 ]

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     # app in project
     'question',
     'account',
+    'sadmin',
     # extra app
     'ckeditor',
     'django.contrib.humanize'
