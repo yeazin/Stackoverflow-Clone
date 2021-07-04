@@ -11,4 +11,5 @@ urlpatterns = [
     path('upvote_tem/', views.upvote_template, name="upvote_tem"),
     path('upvote/', views.upvote, name="upvote"),
     path('search_tag/', views.search_tag, name="search_tag"),
+    path('filter_tag/', views.filter_tag, name="filter_tag"),
 ]

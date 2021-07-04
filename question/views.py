@@ -12,8 +12,10 @@ from question.models import Question
 from .forms import QuestionForms
 from .models import Answer, Question
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.http import JsonResponse
 
-# Questions view 
+
+# Questions view
 class AllQuestions(View):
     def get(self, request, *args, **kwargs):
         question_obj = Question.objects.all().order_by('-created_at')
@@ -35,48 +37,90 @@ class SingleQuestion(View):
         return render(request, 'question/single_question.html', context)
 
 
-# Tags View
+class SingleTagView(View):
+    def get(self, request, id, *args, **kwargs):
+        tag_obj = get_object_or_404(Tags, id=id)
+        tag_obj_question = Question.objects.filter(tags=tag_obj)
+        question_count = tag_obj_question.count()
+        context = {
+            'tag_name': tag_obj,
+            'question': tag_obj_question,
+            't_count': question_count
+        }
+        return render(request, 'tags/single_tag.html', context)
+
+
 class AllTags(View):
     def get(self, request, *args, **kwargs):
-        all_tags = Tags.objects.all().order_by('tag')
+        all_tags = Tags.objects.all()
         page = request.GET.get('page', 1)
         # call django built in pagination class
-        paginator = Paginator(all_tags, per_page=2)
+        paginator = Paginator(all_tags, per_page=4)
         try:
             tags = paginator.page(page)
         except PageNotAnInteger as e:
             tags = paginator.page(1)
         except EmptyPage:
             tags = Paginator.page(paginator.num_pages)
+        first_all_items = list(tags.paginator.page_range)[:-1]
+        last_item = [list(tags.paginator.page_range)[-1]]
         context = {
-            'tags': tags
+            'tags': tags,
+            'all_items': first_all_items,
+            'last_item': last_item
         }
         return render(request, 'tags/tags.html', context)
 
-# single Tag view
-class SingleTagView(View):
-    def get(self,request,id,*args,**kwargs):
-        tag_obj = get_object_or_404(Tags,id=id)
-        tag_obj_question = Question.objects.filter(tags=tag_obj)
-        question_count = tag_obj_question.count()
-        context ={
-            'tag_name':tag_obj,
-            'question':tag_obj_question,
-            't_count':question_count
-        }
-        return render(request,'tags/single_tag.html',context)
 
 def search_tag(request):
     if request.method == "GET":
         search_text = request.GET['search_text']
-        # print(search_text)
         if search_text is not None and search_text != u"":
             search_text = request.GET['search_text']
             tags = Tags.objects.filter(tag__contains=search_text)
         else:
             tags = []
 
-        return render(request, 'tags/tag_search_ajax.html', {'tags': tags})
+        page = request.GET.get('page', 1)
+        # call django built in pagination class
+        paginator = Paginator(tags, per_page=4)
+        try:
+            tags = paginator.page(page)
+        except PageNotAnInteger as e:
+            tags = paginator.page(1)
+        except EmptyPage:
+            tags = Paginator.page(paginator.num_pages)
+        first_all_items = list(tags.paginator.page_range)[:-1]
+        last_item = [list(tags.paginator.page_range)[-1]]
+        return render(request, 'tags/tag_search_ajax.html', {'tags': tags, 'all_items': first_all_items,
+                                                             'last_item': last_item})
+
+
+def filter_tag(request):
+    if request.method == "GET":
+        tags = Tags.objects.all()
+        action_type = request.GET.get('action', None)
+        print('action', action_type)
+        if action_type == "popular":
+            pass
+        elif action_type == 'name':
+            tags = Tags.objects.all().order_by('tag')
+        elif action_type == 'new':
+            tags = Tags.objects.all().order_by('-created_at')
+        page = request.GET.get('page', 1)
+        # call django built in pagination class
+        paginator = Paginator(tags, per_page=4)
+        try:
+            tags = paginator.page(page)
+        except PageNotAnInteger as e:
+            tags = paginator.page(1)
+        except EmptyPage:
+            tags = Paginator.page(paginator.num_pages)
+
+        first_all_items = list(tags.paginator.page_range)[:-1]
+        last_item = [list(tags.paginator.page_range)[-1]]
+        return render(request, 'tags/tag_search_ajax.html', {'tags': tags, 'all_items': first_all_items,
+                                                             'last_item': last_item})
 
 
 # for testing purpose

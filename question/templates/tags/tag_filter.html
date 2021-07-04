@@ -1,0 +1,61 @@
+<script>
+    console.log("Loaded")
+    $(".filter-action").click(function (e) {
+        e.preventDefault()
+        console.log("Clicked")
+        let v = $(this);
+        let actionType = v.data('value')
+        let data = {
+            'csrfmiddlewaretoken': '{{ csrf_token }}', action: actionType,
+        }
+        action(actionType)
+        $.ajax({
+            url: '{% url 'filter_tag' %}',
+            method: "GET",
+            data: data,
+            dataType: 'html',
+            success: function (data) {
+                console.log(data)
+                $('.search-results').html(data)
+                $("")
+            }
+        })
+    })
+
+    function action(actionType) {
+        if (actionType === 'popular') {
+            if ($("#popular").hasClass('is-selected') !== true) {
+                $("#popular").addClass('is-selected')
+            }
+            if ($("#name").hasClass('is-selected') === true) {
+                $("#name").removeClass('is-selected')
+            }
+            if ($("#new").hasClass('is-selected') === true) {
+                $("#new").removeClass('is-selected')
+            }
+
+        } else if (actionType === 'name') {
+            if ($("#popular").hasClass('is-selected') === true) {
+                $("#popular").removeClass('is-selected')
+            }
+            if ($("#name").hasClass('is-selected') !== true) {
+                $("#name").addClass('is-selected')
+            }
+            if ($("#new").hasClass('is-selected') === true) {
+                $("#new").removeClass('is-selected')
+            }
+
+        } else if (actionType === 'new') {
+            if ($("#popular").hasClass('is-selected') === true) {
+                $("#popular").removeClass('is-selected')
+            }
+            if ($("#name").hasClass('is-selected') === true) {
+                $("#name").removeClass('is-selected')
+            }
+            if ($("#new").hasClass('is-selected') !== true) {
+                $("#new").addClass('is-selected')
+            }
+
+        }
+    }
+</script>

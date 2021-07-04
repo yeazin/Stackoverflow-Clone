@@ -10,6 +10,12 @@ class QuestionAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Question, QuestionAdmin)
-admin.site.register(Tags)
+class TagAdmin(admin.ModelAdmin):
+    list_display = [
+        'tag', 'created_at'
+    ]
+
+
+admin.site.register(Tags, TagAdmin)
 admin.site.register(Answer)
 admin.site.register(Comment)
